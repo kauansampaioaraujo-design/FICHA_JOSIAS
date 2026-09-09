@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ficha Josias - Undead RPG</title>
+    <title>UNDEAD RPG - Ficha do Josias</title>
     <style>
         :root {
             --bg-color: #121212;
@@ -19,7 +19,7 @@
         body {
             background-color: var(--bg-color);
             color: var(--text-main);
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             margin: 0;
             padding: 10px;
         }
@@ -29,39 +29,46 @@
             margin: 0 auto;
         }
 
-        h1 {
+        header {
+            background-color: #000;
+            padding: 12px;
             text-align: center;
-            font-size: 1.4rem;
-            margin-bottom: 15px;
-            color: #ddd;
+            font-size: 1.1rem;
+            font-weight: bold;
+            border-radius: 6px;
+            margin-bottom: 12px;
+            letter-spacing: 0.5px;
         }
 
-        .alert {
-            padding: 10px;
-            border-radius: 6px;
-            margin-bottom: 10px;
+        .alert-box {
+            padding: 12px;
+            border-radius: 8px;
+            margin-bottom: 12px;
             font-size: 0.85rem;
             font-weight: bold;
             display: none;
+            align-items: center;
+            justify-content: space-between;
         }
-        .alert-colosso { background-color: #3e2723; border: 1px solid var(--accent-amber); color: var(--accent-amber); }
-        .alert-machucado { background-color: #5c0000; border: 1px solid var(--accent-red); color: #ff8a80; }
+        .colosso-alert { background-color: rgba(62, 39, 35, 0.85); border: 1px solid var(--accent-amber); color: var(--accent-amber); }
+        .machucado-alert { background-color: rgba(92, 0, 0, 0.45); border: 1px solid #ff5252; color: #ff8a80; }
 
         .top-section {
             display: flex;
             gap: 10px;
-            margin-bottom: 10px;
+            margin-bottom: 12px;
         }
 
         .portrait {
-            width: 90px;
-            height: 120px;
-            border-radius: 6px;
+            width: 95px;
+            height: 125px;
+            border-radius: 8px;
             object-fit: cover;
             border: 2px solid var(--text-muted);
+            flex-shrink: 0;
         }
 
-        .resources {
+        .resources-col {
             flex: 1;
             display: flex;
             flex-direction: column;
@@ -70,30 +77,48 @@
 
         .card {
             background-color: var(--card-bg);
-            border-radius: 6px;
+            border-radius: 8px;
             padding: 10px 12px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.5);
-            margin-bottom: 10px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.4);
+            margin-bottom: 12px;
         }
 
-        .resource-row {
+        .resource-card {
+            padding: 8px 10px;
+            margin: 0 !important;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             font-weight: bold;
         }
 
-        .resource-controls button {
+        .temp-resource {
+            background-color: rgba(183, 109, 0, 0.15) !important;
+            color: var(--accent-amber);
+        }
+
+        .controls-group {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .ctrl-btn {
             background: #333;
-            color: #fff;
+            color: #ccc;
             border: none;
-            width: 24px;
-            height: 24px;
+            width: 22px;
+            height: 22px;
             border-radius: 4px;
             cursor: pointer;
             font-weight: bold;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.9rem;
         }
+        .ctrl-btn:hover { background: #444; color: #fff; }
 
         .grid-2 {
             display: grid;
@@ -101,90 +126,136 @@
             gap: 10px;
         }
 
-        .section-title {
-            font-size: 1.1rem;
-            margin: 15px 0 5px 0;
-            border-bottom: 1px solid #444;
-            padding-bottom: 4px;
+        .section-header {
+            font-size: 1.15rem;
             font-weight: bold;
-            color: #ddd;
+            margin: 16px 0 8px 0;
+            padding-bottom: 4px;
+            border-bottom: 1px solid #333;
         }
 
-        .audit-box {
+        .attr-row, .def-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 4px 0;
+            font-size: 0.85rem;
+        }
+
+        .dots {
+            color: #fff;
+            letter-spacing: 2px;
+            font-size: 0.8rem;
+        }
+
+        .audit-card {
             background-color: #1a261a;
-            border: 1px solid #00e676;
+            border: 1px solid var(--accent-green);
+        }
+
+        .manopla-card {
+            background-color: #222;
+        }
+
+        .hab-card {
+            background-color: var(--card-bg);
+            border-radius: 8px;
+            padding: 12px;
+            margin-bottom: 10px;
+            border: 1px solid transparent;
+        }
+        .hab-locked {
+            opacity: 0.4;
+            border-color: #333;
         }
 
         button.action-btn {
             background-color: var(--accent-green);
             color: white;
             border: none;
-            padding: 6px 12px;
+            padding: 6px 14px;
             border-radius: 4px;
             cursor: pointer;
             font-weight: bold;
             font-size: 0.8rem;
-            margin-top: 6px;
         }
 
-        .flex-between {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+        .snackbar {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #222;
+            color: #fff;
+            padding: 10px 16px;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.6);
+            border-left: 4px solid var(--accent-green);
+            z-index: 1000;
+            display: none;
+            max-width: 90%;
+            text-align: center;
         }
-
-        .small-text { font-size: 0.75rem; color: var(--text-muted); }
-        .hab-desc { font-size: 0.8rem; color: #ccc; margin-top: 4px; line-height: 1.3; }
     </style>
 </head>
 <body>
 
 <div class="container">
-    <h1>UNDEAD RPG - Ficha do Josias</h1>
+    <header>UNDEAD RPG - Ficha do Josias</header>
 
-    <!-- Alertas de Estado -->
-    <div id="alertColosso" class="alert alert-colosso flex-between">
-        <span>FORMA COLOSSO ATIVA! Ataques usam d12 de Força.</span>
-        <button onclick="toggleColosso()" style="background:var(--accent-red); color:white; border:none; padding:4px 8px; border-radius:4px; cursor:pointer;">Encerrar</button>
-    </div>
-    <div id="alertMachucado" class="alert alert-machucado">
-        POTÊNCIA MÁXIMA ATIVA! Defesas dobradas, +1d Dano e +5 Bloqueio.
+    <!-- Alerta Colosso -->
+    <div id="colossoAlert" class="alert-box colosso-alert">
+        <span style="font-size: 0.78rem;">FORMA COLOSSO ATIVA! Manoplas desativadas. Ataques usam d12 de Força.</span>
+        <div style="display:flex; gap:6px; align-items:center;">
+            <button onclick="usarImpacto()" style="background:var(--accent-amber); color:#000; border:none; padding:4px 8px; border-radius:4px; font-weight:bold; font-size:0.75rem; cursor:pointer;">Impacto Sísmico (4PE)</button>
+            <button onclick="toggleColosso()" style="background:var(--accent-red); color:#fff; border:none; padding:4px 8px; border-radius:4px; font-size:0.75rem; cursor:pointer;">Encerrar</button>
+        </div>
     </div>
 
-    <!-- Retrato e Recursos -->
+    <!-- Alerta Machucado -->
+    <div id="machucadoAlert" class="alert-box machucado-alert">
+        <span>⚠️ POTÊNCIA MÁXIMA ATIVA! Defesas dobradas, +1d Dano e +5 Bloqueio.</span>
+    </div>
+
+    <!-- Seção Superior: Retrato e Recursos -->
     <div class="top-section">
-        <img id="josiasPortrait" class="portrait" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=500" alt="Josias">
-        <div class="resources">
-            <div class="card resource-row" style="margin:0;">
+        <img id="retrato" class="portrait" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=500" alt="Josias">
+        <div class="resources-col">
+            <!-- Vida Real -->
+            <div class="card resource-card">
                 <span>Vida Real</span>
-                <div class="resource-controls flex-between" style="gap:8px;">
-                    <button onclick="alterar('vida', -1)">-</button>
-                    <span id="vidaTxt" style="color:var(--accent-red);">160 / 163</span>
-                    <button onclick="alterar('vida', 1)">+</button>
+                <div class="controls-group">
+                    <button class="ctrl-btn" onclick="mudarRecurso('vida', -1)">-</button>
+                    <span id="txtVida" style="color:var(--accent-red);">160 / 163</span>
+                    <button class="ctrl-btn" onclick="mudarRecurso('vida', 1)">+</button>
                 </div>
             </div>
-            <div class="card resource-row" style="margin:0; background: rgba(255, 179, 0, 0.1);">
-                <span style="color:var(--accent-amber);">Vida Temp.</span>
-                <div class="resource-controls flex-between" style="gap:8px;">
-                    <button onclick="alterar('vidaTemp', -1)">-</button>
-                    <span id="vidaTempTxt" style="color:var(--accent-amber);">0 PV</span>
-                    <button onclick="alterar('vidaTemp', 1)">+</button>
+            <!-- Vida Temporária -->
+            <div class="card resource-card temp-resource">
+                <span>Vida Temp.</span>
+                <div class="controls-group">
+                    <button class="ctrl-btn" onclick="mudarRecurso('vidaTemp', -1)">-</button>
+                    <span id="txtVidaTemp">0 PV</span>
+                    <button class="ctrl-btn" onclick="mudarRecurso('vidaTemp', 1)">+</button>
                 </div>
             </div>
-            <div class="card resource-row" style="margin:0;">
+            <!-- Sanidade -->
+            <div class="card resource-card">
                 <span>Sanidade</span>
-                <div class="resource-controls flex-between" style="gap:8px;">
-                    <button onclick="alterar('sanidade', -1)">-</button>
-                    <span id="sanidadeTxt" style="color:var(--accent-blue);">20 / 25</span>
-                    <button onclick="alterar('sanidade', 1)">+</button>
+                <div class="controls-group">
+                    <button class="ctrl-btn" onclick="mudarRecurso('sanidade', -1)">-</button>
+                    <span id="txtSanidade" style="color:var(--accent-blue);">20 / 25</span>
+                    <button class="ctrl-btn" onclick="mudarRecurso('sanidade', 1)">+</button>
                 </div>
             </div>
-            <div class="card resource-row" style="margin:0;">
+            <!-- PE -->
+            <div class="card resource-card">
                 <span>Esforço (PE)</span>
-                <div class="resource-controls flex-between" style="gap:8px;">
-                    <button onclick="alterar('pe', -1)">-</button>
-                    <span id="peTxt" style="color:var(--accent-green);">63 / 63</span>
-                    <button onclick="alterar('pe', 1)">+</button>
+                <div class="controls-group">
+                    <button class="ctrl-btn" onclick="mudarRecurso('pe', -1)">-</button>
+                    <span id="txtPe" style="color:var(--accent-green);">63 / 63</span>
+                    <button class="ctrl-btn" onclick="mudarRecurso('pe', 1)">+</button>
                 </div>
             </div>
         </div>
@@ -192,247 +263,341 @@
 
     <!-- Atributos e Defesas -->
     <div class="grid-2">
-        <div class="card">
-            <strong>Atributos</strong>
-            <hr style="border-color:#444;">
-            <div class="flex-between small-text" style="margin:6px 0;"><span>Força</span><span>●○○○○</span></div>
-            <div class="flex-between small-text" style="margin:6px 0;"><span>Destreza</span><span>●○○○○</span></div>
-            <div class="flex-between small-text" style="margin:6px 0;"><span>Presença</span><span>●○○○○</span></div>
-            <div class="flex-between small-text" style="margin:6px 0;"><span>Vitalidade</span><span>●●○○○</span></div>
-            <div class="flex-between small-text" style="margin:6px 0;"><span>Intelecto</span><span>○○○○○</span></div>
-            <div class="flex-between small-text" style="margin:6px 0;"><span>Poder</span><span>●●○○○</span></div>
+        <div class="card" style="margin-bottom:0;">
+            <div style="font-weight:bold; text-align:center; font-size:0.95rem;">Atributos</div>
+            <hr style="border-color:#333; margin:8px 0;">
+            <div class="attr-row"><span>Força</span><span class="dots">●○○○○</span></div>
+            <div class="attr-row"><span>Destreza</span><span class="dots">●○○○○</span></div>
+            <div class="attr-row"><span>Presença</span><span class="dots">●○○○○</span></div>
+            <div class="attr-row"><span>Vitalidade</span><span class="dots">●●○○○</span></div>
+            <div class="attr-row"><span>Intelecto</span><span class="dots">○○○○○</span></div>
+            <div class="attr-row"><span>Poder</span><span class="dots">●●○○○</span></div>
         </div>
-        <div class="card">
-            <div class="flex-between">
-                <strong>Defesas</strong>
-                <button onclick="toggleColete()" id="btnColete" style="background:var(--accent-green); color:white; border:none; font-size:10px; padding:2px 6px; border-radius:3px; cursor:pointer;">Colete: ON</button>
+
+        <div class="card" style="margin-bottom:0;">
+            <div style="display:flex; justify-content:space-between; align-items:center;">
+                <span style="font-weight:bold; font-size:0.95rem;">Defesas</span>
+                <button id="btnColete" onclick="toggleColete()" style="background:var(--accent-green); color:#fff; border:none; padding:2px 6px; font-size:10px; border-radius:4px; cursor:pointer; font-weight:bold;">Colete: ON</button>
             </div>
-            <hr style="border-color:#444;">
-            <div class="flex-between" style="font-size:0.85rem; margin:4px 0;">
+            <hr style="border-color:#333; margin:8px 0;">
+            
+            <div class="def-row">
                 <span>Física</span>
-                <div><span id="defFisicaVal" style="color:var(--accent-amber); font-weight:bold;">24</span> <button onclick="ajustarExt('fisica', 1)" style="background:none; border:none; color:#0f0; cursor:pointer;">+</button></div>
+                <div style="display:flex; align-items:center; gap:4px;">
+                    <span onclick="mudarDefExt('fisica', -1)" style="color:#ef5350; cursor:pointer; font-size:0.8rem;">[-]</span>
+                    <span id="valDefFisica" style="color:var(--accent-amber); font-weight:bold;">24</span>
+                    <span onclick="mudarDefExt('fisica', 1)" style="color:#66bb6a; cursor:pointer; font-size:0.8rem;">[+]</span>
+                </div>
             </div>
-            <div class="flex-between" style="font-size:0.85rem; margin:4px 0;">
+            <div style="font-size:8px; color:var(--text-muted); margin-bottom:4px;">Base (Vit) + Colete</div>
+
+            <div class="def-row">
                 <span>Mental</span>
-                <div><span id="defMentalVal" style="color:var(--accent-amber); font-weight:bold;">0</span> <button onclick="ajustarExt('mental', 1)" style="background:none; border:none; color:#0f0; cursor:pointer;">+</button></div>
+                <div style="display:flex; align-items:center; gap:4px;">
+                    <span onclick="mudarDefExt('mental', -1)" style="color:#ef5350; cursor:pointer; font-size:0.8rem;">[-]</span>
+                    <span id="valDefMental" style="color:var(--accent-amber); font-weight:bold;">0</span>
+                    <span onclick="mudarDefExt('mental', 1)" style="color:#66bb6a; cursor:pointer; font-size:0.8rem;">[+]</span>
+                </div>
             </div>
-            <div class="flex-between" style="font-size:0.85rem; margin:4px 0;">
+            <div style="font-size:8px; color:var(--text-muted); margin-bottom:4px;">Base + Ext</div>
+
+            <div class="def-row">
                 <span>Elemental</span>
-                <div><span id="defElementalVal" style="color:var(--accent-amber); font-weight:bold;">20</span> <button onclick="ajustarExt('elemental', 1)" style="background:none; border:none; color:#0f0; cursor:pointer;">+</button></div>
+                <div style="display:flex; align-items:center; gap:4px;">
+                    <span onclick="mudarDefExt('elemental', -1)" style="color:#ef5350; cursor:pointer; font-size:0.8rem;">[-]</span>
+                    <span id="valDefElemental" style="color:var(--accent-amber); font-weight:bold;">20</span>
+                    <span onclick="mudarDefExt('elemental', 1)" style="color:#66bb6a; cursor:pointer; font-size:0.8rem;">[+]</span>
+                </div>
             </div>
-            <hr style="border-color:#444;">
-            <div class="flex-between" style="font-size:0.85rem;">
+            <div style="font-size:8px; color:var(--text-muted); margin-bottom:4px;">Colete Amaldiçoado</div>
+
+            <hr style="border-color:#333; margin:6px 0;">
+            <div class="def-row" style="font-weight:bold;">
                 <span>Bloqueio</span>
-                <span id="bloqueioVal" style="color:var(--accent-amber); font-weight:bold;">20</span>
+                <span id="valBloqueio" style="color:var(--accent-amber);">20</span>
             </div>
         </div>
     </div>
 
     <!-- Auditoria de Dano -->
-    <div class="card audit-box">
-        <div class="flex-between">
-            <strong style="color:#00e676;">Auditoria de Dano para o Ataque</strong>
+    <div class="card audit-card" style="margin-top:12px;">
+        <div style="display:flex; align-items:center; gap:6px; color:var(--accent-green); font-weight:bold; font-size:0.95rem;">
+            <span>⚖️</span> Auditoria de Dano para o Ataque
         </div>
-        <hr style="border-color:#00e676;">
-        <div id="auditList" style="font-size:0.85rem;"></div>
+        <hr style="border-color:var(--accent-green); margin:8px 0;">
+        <div id="auditContent" style="display:flex; flex-direction:column; gap:4px; font-size:0.85rem;"></div>
     </div>
 
     <!-- Manoplas -->
-    <div class="card" id="cardManoplas">
-        <div class="flex-between">
-            <strong id="manoplaTitle">Manoplas - Vontade de Aço</strong>
-            <span class="small-text">Item Amaldiçoado</span>
+    <div id="manoplaContainer" class="card manopla-card">
+        <div style="display:flex; justify-content:space-between; align-items:center;">
+            <span id="manoplaTitle" style="font-weight:bold; color:var(--accent-amber);">Manoplas - Vontade de Aço</span>
+            <span style="font-size:0.75rem; color:var(--text-muted);">Item Amaldiçoado</span>
         </div>
-        <div class="small-text">Desdobram-se em grandes manoplas de metal enferrujado.</div>
-        <hr style="border-color:#444;">
-        <div class="flex-between" style="font-size:0.85rem;">
-            <span style="color:#00e676; font-weight:bold;">Cargas: <span id="cargasTxt">0</span>/5</span>
-            <span style="color:var(--accent-red); font-weight:bold;">Rupturas: <span id="rupturasTxt">0</span>/5</span>
+        <div id="manoplaSub" style="font-size:0.75rem; color:var(--text-muted); margin-top:2px;">Desdobram-se em grandes manoplas de metal enferrujado.</div>
+        <hr style="border-color:#333; margin:8px 0;">
+        <div style="display:flex; justify-content:space-between; font-size:0.85rem;">
+            <span>Dano: <strong style="color:var(--accent-green);">2d8 físico</strong></span>
+            <span style="color:var(--text-muted);">Crítico: 20 / +2d</span>
         </div>
-        <div style="text-align:center; margin-top:8px;">
-            <button onclick="mudarManopla('ativar')" class="action-btn" style="background:var(--accent-blue);">Ativar (2 PE)</button>
-            <button onclick="mudarManopla('sucesso')" class="action-btn" style="background:var(--accent-green);">+1 Carga</button>
-            <button onclick="mudarManopla('falha')" class="action-btn" style="background:var(--accent-amber); color:black;">+1 Ruptura</button>
-            <button onclick="mudarManopla('reset')" class="action-btn" style="background:#555;">Zerar</button>
+        
+        <div style="background:rgba(0,0,0,0.3); padding:8px; border-radius:6px; margin-top:8px; text-align:center;">
+            <div style="display:flex; justify-content:space-around; font-size:0.85rem; font-weight:bold;">
+                <span style="color:#00e5ff;">Cargas: <span id="txtCargas">0</span> / 5</span>
+                <span style="color:#ff5252;">Rupturas: <span id="txtRupturas">0</span> / 5</span>
+            </div>
+            <div id="txtRupturaDano" style="font-size:0.75rem; color:var(--accent-amber); margin:4px 0;">Dano da Ruptura (se estourar): 0 de dano puro</div>
+            <div style="display:flex; gap:6px; justify-content:center; margin-top:6px; flex-wrap:wrap;">
+                <button onclick="manoplaAcao('ativar')" style="background:#1565c0; color:#fff; border:none; padding:4px 10px; border-radius:4px; font-size:0.75rem; cursor:pointer;">Ativar (2 PE)</button>
+                <button onclick="manoplaAcao('sucesso')" style="background:#2e7d32; color:#fff; border:none; padding:4px 10px; border-radius:4px; font-size:0.75rem; cursor:pointer;">+1 Carga</button>
+                <button onclick="manoplaAcao('falha')" style="background:#ef6c00; color:#fff; border:none; padding:4px 10px; border-radius:4px; font-size:0.75rem; cursor:pointer;">+1 Ruptura</button>
+                <button onclick="manoplaAcao('reset')" style="background:#424242; color:#fff; border:none; padding:4px 10px; border-radius:4px; font-size:0.75rem; cursor:pointer;">Zerar</button>
+            </div>
         </div>
     </div>
 
-    <!-- HABILIDADES DE CLASSE -->
-    <div class="section-title">Habilidades de Classe (Brutamontes)</div>
-    <div class="card">
-        <div class="flex-between"><strong>Vitalidade de Ferro (0%)</strong><span class="small-text">Passiva</span></div>
-        <div class="hab-desc">Você recebe 2 pontos de Defesa Física para cada ponto de Vitalidade que possui. Além disso, ganha +10 PV iniciais e +5 PV a cada novo marco de EXP.</div>
-    </div>
-    <div class="card">
-        <div class="flex-between"><strong>Escudo Humano (20%)</strong><span class="small-text">4 PE</span></div>
-        <div class="hab-desc">Quando um aliado dentro de um alcance curto for alvo de um ataque, você pode gastar 4 PE ocupar o seu lugar.</div>
-        <div style="text-align:right;"><button onclick="usarHab(4, 'Escudo Humano')" class="action-btn">Usar (4 PE)</button></div>
-    </div>
-    <div class="card">
-        <div class="flex-between"><strong>Inquebrável (40%)</strong><span class="small-text">4 PE</span></div>
-        <div class="hab-desc">Você pode gastar 4 PE no início de uma cena para ser imune a condições físicas até o fim dela.</div>
-        <div style="text-align:right;"><button onclick="usarHab(4, 'Inquebrável')" class="action-btn">Usar (4 PE)</button></div>
-    </div>
-    <div class="card">
-        <div class="flex-between"><strong>Potência Máxima (60%)</strong><span class="small-text">Passiva (Postura)</span></div>
-        <div class="hab-desc">Quando você ficar Machucado, atinge sua Potência Máxima. Ataques causam +1d, defesas/resistências são dobradas e ganha +5 em Bloqueio.</div>
-    </div>
-    <div class="card">
-        <div class="flex-between"><strong>Homem de Aço (80%)</strong><span class="small-text">Passiva</span></div>
-        <div class="hab-desc">Ao sofrer dano corpo a corpo, acumula ponto de dor. No máximo, causa +5 de dano por ponto.</div>
-    </div>
-    <div class="card">
-        <div class="flex-between"><strong>Invencível (99%)</strong><span class="small-text">Passiva</span></div>
-        <div class="hab-desc">Mesmo com seus PV reduzidos a 0, você não cai imediatamente.</div>
-    </div>
+    <!-- Habilidades de Classe -->
+    <div class="section-header">Habilidades de Classe</div>
+    <div id="listaHabClasse"></div>
 
-    <!-- HABILIDADES ELEMENTAIS -->
-    <div class="section-title">Habilidades Elementais (Terra)</div>
-    <div class="card">
-        <div class="flex-between"><strong>Pedrada! (10%)</strong><span class="small-text">Passiva</span></div>
-        <div class="hab-desc">A terra pode ser o abrigo de alguns, mas é a ruína de outros. Causa +1d8 de dano físico.</div>
-    </div>
-    <div class="card">
-        <div class="flex-between"><strong>Porco Espinho (30%)</strong><span class="small-text">4 PE</span></div>
-        <div class="hab-desc">Ao falhar em Reação, gasta 4 PE para desferir espinhos de pedra. O alvo sofre 4d8 de dano elemental.</div>
-        <div style="text-align:right;"><button onclick="usarHab(4, 'Porco Espinho')" class="action-btn">Usar (4 PE)</button></div>
-    </div>
-    <div class="card">
-        <div class="flex-between"><strong>Colosso (50%)</strong><span class="small-text">14 PE</span></div>
-        <div class="hab-desc">Recebe metade da vida máxima em PV Temporários, +5 de Bloqueio e ataques causam d12/Força. No estado, gasta +4 PE ao atingir alvo para teste de Vitalidade vs Poder (4d12 físico + 2d20 elemental, Enfraquecido e Vulnerável).</div>
-        <div style="text-align:right;"><button onclick="toggleColosso()" class="action-btn" style="background:var(--accent-amber); color:black;">Ativar Colosso (14 PE)</button></div>
-    </div>
+    <!-- Habilidades Elementais -->
+    <div class="section-header">Habilidades Elementais (Terra)</div>
+    <div id="listaHabElemental"></div>
 
 </div>
 
+<!-- Snackbar de avisos -->
+<div id="snackbar" class="snackbar">Mensagem de aviso</div>
+
 <script>
-    let vida = 160;
-    let vidaMax = 163;
+    // Dados do Personagem
+    let vidaAtual = 160;
+    let vidaMaxima = 163;
     let vidaTemp = 0;
-    let sanidade = 20;
-    let sanidadeMax = 25;
-    let pe = 63;
-    let peMax = 63;
+    let sanidadeAtual = 20;
+    let sanidadeMaxima = 25;
+    let peAtual = 63;
+    let peMaximo = 63;
+    let nexAtual = 63;
 
-    let coleteOn = true;
-    let colossoOn = false;
-    let cargas = 0;
-    let rupturas = 0;
+    let coleteAtivo = true;
+    let colossoAtivo = false;
+    let cargasManoplas = 0;
+    let rupturasManoplas = 0;
 
-    let extFisica = 0;
-    let extMental = 0;
-    let extElemental = 0;
+    let defFisicaExtra = 0;
+    let defMentalExtra = 0;
+    let defElementalExtra = 0;
 
     const imgNormal = 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=500';
     const imgMachucado = 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=500';
     const imgColosso = 'https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=500';
 
-    function isMachucado() { return vida <= (vidaMax / 2); }
+    const habilidadesClasse = [
+        { nivel: 0, nome: "Vitalidade de Ferro", custo: 0, tipo: "Passiva", desc: "Você recebe 2 pontos de Defesa Física para cada ponto de Vitalidade que possui. Além disso, ganha +10 PV iniciais e +5 PV a cada novo marco de EXP." },
+        { nivel: 20, nome: "Escudo Humano", custo: 4, tipo: "Ativa", desc: "Quando um aliado dentro de um alcance curto for alvo de um ataque, você pode gastar 4 PE ocupar o seu lugar." },
+        { nivel: 40, nome: "Inquebrável", custo: 4, tipo: "Ativa", desc: "Você pode gastar 4 PE no início de uma cena para ser imune a condições físicas até o fim dela." },
+        { nivel: 60, nome: "Potência Máxima", custo: 0, tipo: "Passiva (Postura)", desc: "Quando você ficar Machucado, atinge sua Potência Máxima. Ataques causam +1d, defesas/resistências são dobradas e ganha +5 em Bloqueio." },
+        { nivel: 80, nome: "Homem de Aço", custo: 0, tipo: "Passiva", desc: "Ao sofrer dano corpo a corpo, acumula ponto de dor. No máximo, causa +5 de dano por ponto." },
+        { nivel: 99, nome: "Invencível", custo: 0, tipo: "Passiva", desc: "Mesmo com seus PV reduzidos a 0, você não cai imediatamente." }
+    ];
 
-    function alterar(tipo, val) {
-        if(tipo === 'vida') vida = Math.max(0, Math.min(vidaMax, vida + val));
-        if(tipo === 'vidaTemp') vidaTemp = Math.max(0, vidaTemp + val);
-        if(tipo === 'sanidade') sanidade = Math.max(0, Math.min(sanidadeMax, sanidade + val));
-        if(tipo === 'pe') pe = Math.max(0, Math.min(peMax, pe + val));
-        atualizarTela();
+    const habilidadesElementais = [
+        { nivel: 10, nome: "Pedrada!", custo: 0, tipo: "Passiva", desc: "A terra pode ser o abrigo de alguns, mas é a ruína de outros. Causa +1d8 de dano físico." },
+        { nivel: 30, nome: "Porco Espinho", custo: 4, tipo: "Reação", desc: "Ao falhar em Reação, gasta 4 PE para desferir espinhos de pedra. O alvo sofre 4d8 de dano elemental." },
+        { nivel: 50, nome: "Colosso", custo: 14, tipo: "Ativa (Cena)", desc: "Recebe metade da vida máxima em PV Temporários, +5 de Bloqueio e ataques causam d12/Força. No estado, gasta +4 PE ao atingir alvo para teste de Vitalidade vs Poder (4d12 físico + 2d20 elemental, Enfraquecido e Vulnerável)." }
+    ];
+
+    function isMachucado() {
+        return vidaAtual <= Math.floor(vidaMaxima / 2);
     }
 
-    function ajustarExt(tipo, val) {
-        if(tipo === 'fisica') extFisica += val;
-        if(tipo === 'mental') extMental += val;
-        if(tipo === 'elemental') extElemental += val;
-        atualizarTela();
+    function mostrarSnackbar(msg) {
+        const sb = document.getElementById('snackbar');
+        sb.innerText = msg;
+        sb.style.display = 'block';
+        setTimeout(() => { sb.style.display = 'none'; }, 2500);
     }
 
-    function toggleColete() { coleteOn = !coleteOn; atualizarTela(); }
+    function mudarRecurso(tipo, valor) {
+        if (tipo === 'vida') vidaAtual = Math.max(0, Math.min(vidaMaxima, vidaAtual + valor));
+        if (tipo === 'vidaTemp') vidaTemp = Math.max(0, vidaTemp + valor);
+        if (tipo === 'sanidade') sanidadeAtual = Math.max(0, Math.min(sanidadeMaxima, sanidadeAtual + valor));
+        if (tipo === 'pe') peAtual = Math.max(0, Math.min(peMaximo, peAtual + valor));
+        atualizarTudo();
+    }
+
+    function mudarDefExt(tipo, valor) {
+        if (tipo === 'fisica') defFisicaExtra += valor;
+        if (tipo === 'mental') defMentalExtra = Math.max(0, defMentalExtra + valor);
+        if (tipo === 'elemental') defElementalExtra += valor;
+        atualizarTudo();
+    }
+
+    function toggleColete() {
+        coleteAtivo = !coleteAtivo;
+        atualizarTudo();
+    }
 
     function toggleColosso() {
-        if(!colossoOn) {
-            if(pe >= 14) {
-                pe -= 14;
-                vidaTemp += Math.floor(vidaMax / 2);
-                colossoOn = true;
-            } else { alert("PE Insuficiente!"); return; }
-        } else { colossoOn = false; }
-        atualizarTela();
+        if (!colossoAtivo) {
+            if (peAtual >= 14) {
+                peAtual -= 14;
+                vidaTemp += Math.floor(vidaMaxima / 2);
+                colossoAtivo = true;
+                mostrarSnackbar("Colosso ativado! +PV Temp e -14 PE");
+            } else {
+                mostrarSnackbar("PE Insuficiente para ativar Colosso!");
+                return;
+            }
+        } else {
+            colossoAtivo = false;
+        }
+        atualizarTudo();
+    }
+
+    function usarImpacto() {
+        if (peAtual >= 4) {
+            peAtual -= 4;
+            mostrarSnackbar("Impacto Sísmico executado! (-4 PE)");
+        } else {
+            mostrarSnackbar("PE Insuficiente para Impacto Sísmico!");
+        }
+        atualizarTudo();
     }
 
     function usarHab(custo, nome) {
-        if(pe >= custo) {
-            pe -= custo;
-            alert(`${nome} usada! (-${custo} PE)`);
-            atualizarTela();
-        } else { alert(`PE Insuficiente para usar ${nome}!`); }
-    }
-
-    function mudarManopla(acao) {
-        if(colossoOn) return;
-        if(acao === 'ativar' && pe >= 2) { pe -= 2; cargas = 1; }
-        if(acao === 'sucesso' && cargas < 5) cargas++;
-        if(acao === 'falha') {
-            rupturas++;
-            if(rupturas >= 5) { cargas = 0; rupturas = 0; }
-        }
-        if(acao === 'reset') { cargas = 0; rupturas = 0; }
-        atualizarTela();
-    }
-
-    function atualizarTela() {
-        document.getElementById('vidaTxt').innerText = `${vida} / ${vidaMax}`;
-        document.getElementById('vidaTempTxt').innerText = `${vidaTemp} PV`;
-        document.getElementById('sanidadeTxt').innerText = `${sanidade} / ${sanidadeMax}`;
-        document.getElementById('peTxt').innerText = `${pe} / ${peMax}`;
-
-        let machucado = isMachucado();
-        document.getElementById('alertMachucado').style.display = machucado ? 'block' : 'none';
-        document.getElementById('alertColosso').style.display = colossoOn ? 'flex' : 'none';
-
-        let imgSrc = imgNormal;
-        if(colossoOn) imgSrc = imgColosso;
-        else if(machucado) imgSrc = imgMachucado;
-        document.getElementById('josiasPortrait').src = imgSrc;
-
-        let btnColete = document.getElementById('btnColete');
-        btnColete.innerText = coleteOn ? "Colete: ON" : "Colete: OFF";
-        btnColete.style.background = coleteOn ? "var(--accent-green)" : "#555";
-
-        let bonusColeteVal = coleteOn ? 20 : 0;
-        let fisicaParcial = 4 + bonusColeteVal + extFisica;
-        let mentalParcial = extMental;
-        let elementalParcial = extElemental + bonusColeteVal;
-
-        document.getElementById('defFisicaVal').innerText = machucado ? fisicaParcial * 2 : fisicaParcial;
-        document.getElementById('defMentalVal').innerText = machucado ? mentalParcial * 2 : mentalParcial;
-        document.getElementById('defElementalVal').innerText = machucado ? elementalParcial * 2 : elementalParcial;
-
-        let bonusManoplas = colossoOn ? 0 : (cargas * 5);
-        let bonusPotMax = machucado ? 5 : 0;
-        let bonusColossoVal = colossoOn ? 5 : 0;
-        let bloqueioTotal = 5 + 10 + bonusManoplas + bonusPotMax + bonusColossoVal;
-        document.getElementById('bloqueioVal').innerText = bloqueioTotal;
-
-        let auditHTML = '';
-        if(colossoOn) {
-            auditHTML += `<div class="flex-between"><span>Forma Colosso (Terra)</span><span style="color:var(--accent-amber)">1d12 elemental (Rocha)</span></div>`;
-            auditHTML += `<div class="flex-between"><span>Impacto Sísmico</span><span style="color:var(--accent-amber)">+4d12 físico + 2d20 elemental</span></div>`;
+        if (peAtual >= custo) {
+            peAtual -= custo;
+            if (nome === "Colosso") {
+                toggleColosso();
+                return;
+            }
+            mostrarSnackbar(`${nome} usada! (-${custo} PE)`);
+            atualizarTudo();
         } else {
-            auditHTML += `<div class="flex-between"><span>Manoplas: Vontade de Aço</span><span style="color:var(--accent-amber)">2d8 físico</span></div>`;
-            if(cargas > 0) {
-                auditHTML += `<div class="flex-between"><span>Cargas das Manoplas (${cargas})</span><span style="color:var(--accent-amber)">+${cargas * 5} elemental</span></div>`;
+            mostrarSnackbar(`PE Insuficiente para usar ${nome}!`);
+        }
+    }
+
+    function manoplaAcao(acao) {
+        if (colossoAtivo) {
+            mostrarSnackbar("Impossível usar manoplas na forma Colosso!");
+            return;
+        }
+        if (acao === 'ativar' && peAtual >= 2) {
+            peAtual -= 2;
+            cargasManoplas = 1;
+        } else if (acao === 'sucesso' && cargasManoplas < 5) {
+            cargasManoplas++;
+        } else if (acao === 'falha') {
+            rupturasManoplas++;
+            if (rupturasManoplas >= 5) { cargasManoplas = 0; rupturasManoplas = 0; }
+        } else if (acao === 'reset') {
+            cargasManoplas = 0;
+            rupturasManoplas = 0;
+        }
+        atualizarTudo();
+    }
+
+    function renderizarHabilidades(lista, containerId) {
+        const container = document.getElementById(containerId);
+        container.innerHTML = '';
+        lista.forEach(hab => {
+            let desbloqueada = nexAtual >= hab.nivel;
+            let html = `
+                <div class="hab-card ${desbloqueada ? '' : 'hab-locked'}">
+                    <div style="display:flex; justify-content:space-between; align-items:center;">
+                        <span style="font-weight:bold; font-size:0.95rem; color:${desbloqueada ? '#fff' : '#666'};">${hab.nome} (${hab.nivel}%)</span>
+                        ${!desbloqueada ? '<span style="font-size:0.8rem;">🔒</span>' : `<span style="font-size:0.75rem; color:var(--text-muted);">${hab.tipo}</span>`}
+                    </div>
+                    <div style="font-size:0.8rem; color:${desbloqueada ? 'var(--text-muted)' : '#555'}; margin-top:6px; line-height:1.4;">${hab.desc}</div>
+                    ${desbloqueada && hab.custo > 0 ? `
+                        <div style="text-align:right; margin-top:8px;">
+                            <button onclick="usarHab(${hab.custo}, '${hab.nome}')" class="action-btn">Usar (${hab.custo} PE)</button>
+                        </div>
+                    ` : ''}
+                </div>
+            `;
+            container.innerHTML += html;
+        });
+    }
+
+    function atualizarTudo() {
+        let machucado = isMachucado();
+
+        // Textos de Recursos
+        document.getElementById('txtVida').innerText = `${vidaAtual} / ${vidaMaxima}`;
+        document.getElementById('txtVidaTemp').innerText = `${vidaTemp} PV`;
+        document.getElementById('txtSanidade').innerText = `${sanidadeAtual} / ${sanidadeMaxima}`;
+        document.getElementById('txtPe').innerText = `${peAtual} / ${peMaximo}`;
+
+        // Alertas e Retrato
+        document.getElementById('machucadoAlert').style.display = machucado ? 'flex' : 'none';
+        document.getElementById('colossoAlert').style.display = colossoAtivo ? 'flex' : 'none';
+
+        let retrato = imgNormal;
+        if (colossoAtivo) retrato = imgColosso;
+        else if (machucado) retrato = imgMachucado;
+        document.getElementById('retrato').src = retrato;
+
+        // Colete
+        let btnColete = document.getElementById('btnColete');
+        btnColete.innerText = coleteAtivo ? "Colete: ON" : "Colete: OFF";
+        btnColete.style.background = coleteAtivo ? "var(--accent-green)" : "#555";
+
+        // Defesas cálculos
+        let bonusColete = coleteAtivo ? 20 : 0;
+        let defFis = 4 + bonusColete + defFisicaExtra;
+        let defMen = defMentalExtra;
+        let defEle = defElementalExtra + bonusColete;
+
+        if (machucado) {
+            defFis *= 2;
+            defMen *= 2;
+            defEle *= 2;
+        }
+
+        document.getElementById('valDefFisica').innerText = defFis;
+        document.getElementById('valDefMental').innerText = defMen;
+        document.getElementById('valDefElemental').innerText = defEle;
+
+        let bonusManoplas = colossoAtivo ? 0 : (cargasManoplas * 5);
+        let bonusPotMax = machucado ? 5 : 0;
+        let bonusColosso = colossoAtivo ? 5 : 0;
+        let bloqueioTotal = 5 + (5 * 2) + 0 + bonusManoplas + bonusPotMax + bonusColosso;
+        document.getElementById('valBloqueio').innerText = bloqueioTotal;
+
+        // Auditoria
+        let auditHTML = '';
+        if (colossoAtivo) {
+            auditHTML += `<div style="display:flex; justify-content:space-between;"><span>Forma Colosso (Terra)</span><span style="color:var(--accent-amber); font-weight:bold;">1d12 elemental (Rocha Viva)</span></div>`;
+            auditHTML += `<div style="display:flex; justify-content:space-between;"><span>Impacto Sísmico (Condicional)</span><span style="color:var(--accent-amber); font-weight:bold;">+4d12 físico + 2d20 elemental</span></div>`;
+        } else {
+            auditHTML += `<div style="display:flex; justify-content:space-between;"><span>Manoplas: Vontade de Aço</span><span style="color:var(--accent-amber); font-weight:bold;">2d8 físico</span></div>`;
+            if (cargasManoplas > 0) {
+                auditHTML += `<div style="display:flex; justify-content:space-between;"><span>Cargas das Manoplas (${cargasManoplas})</span><span style="color:var(--accent-amber); font-weight:bold;">+${cargasManoplas * 5} elemental</span></div>`;
             }
         }
-        auditHTML += `<div class="flex-between"><span>Passiva: Pedrada! (Terra)</span><span style="color:var(--accent-amber)">+1d8 físico</span></div>`;
-        if(machucado) {
-            auditHTML += `<div class="flex-between"><span>Potência Máxima</span><span style="color:var(--accent-amber)">+1d dano físico</span></div>`;
+        auditHTML += `<div style="display:flex; justify-content:space-between;"><span>Passiva: Pedrada! (10% Terra)</span><span style="color:var(--accent-amber); font-weight:bold;">+1d8 físico</span></div>`;
+        if (machucado) {
+            auditHTML += `<div style="display:flex; justify-content:space-between;"><span>Postura: Potência Máxima</span><span style="color:var(--accent-amber); font-weight:bold;">+1d de dano físico</span></div>`;
         }
-        document.getElementById('auditList').innerHTML = auditHTML;
+        document.getElementById('auditContent').innerHTML = auditHTML;
 
-        document.getElementById('cardManoplas').style.opacity = colossoOn ? '0.5' : '1';
-        document.getElementById('cargasTxt').innerText = cargas;
-        document.getElementById('rupturasTxt').innerText = rupturas;
+        // Manoplas visual
+        document.getElementById('manoplaContainer').style.opacity = colossoAtivo ? '0.4' : '1';
+        document.getElementById('txtCargas').innerText = cargasManoplas;
+        document.getElementById('txtRupturas').innerText = rupturasManoplas;
+        document.getElementById('txtRupturaDano').innerText = `Dano da Ruptura (se estourar): ${5 * (cargasManoplas + rupturasManoplas)} de dano puro`;
+
+        // Renderizar Habilidades
+        renderizarHabilidades(habilidadesClasse, 'listaHabClasse');
+        renderizarHabilidades(habilidadesElementais, 'listaHabElemental');
     }
 
-    atualizarTela();
+    // Inicializar aplicação
+    atualizarTudo();
 </script>
 
 </body>
