@@ -180,6 +180,44 @@
             font-size: 0.8rem;
         }
 
+        /* Fragmento: Broto */
+        .broto-card {
+            background: linear-gradient(180deg, rgba(27, 94, 32, 0.28), rgba(30, 30, 30, 0.95));
+            border: 1px solid #66bb6a;
+        }
+        .broto-active-box {
+            background: rgba(27, 94, 32, 0.34);
+            border: 1px solid #81c784;
+            color: #e8f5e9;
+        }
+        .broto-effects {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px;
+            margin-top: 10px;
+        }
+        .broto-effect {
+            background: rgba(0,0,0,0.22);
+            border: 1px solid #355e3b;
+            border-radius: 7px;
+            padding: 8px;
+            cursor: pointer;
+        }
+        .broto-effect.selected {
+            border-color: #81c784;
+            background: rgba(76, 175, 80, 0.18);
+        }
+        .broto-effect.disabled { opacity: 0.45; cursor: not-allowed; }
+        .broto-effect-title { font-weight: bold; font-size: 0.82rem; color: #a5d6a7; }
+        .broto-effect-desc { margin-top: 4px; font-size: 0.75rem; color: var(--text-muted); line-height: 1.35; }
+        .broto-controls { display:flex; gap:6px; flex-wrap:wrap; margin-top:10px; }
+        .broto-mini { font-size:0.75rem; color:var(--text-muted); line-height:1.4; }
+        .broto-chip {
+            display:inline-block; padding:3px 7px; margin:2px; border-radius:999px;
+            background:rgba(76,175,80,.18); border:1px solid #66bb6a; color:#c8e6c9; font-size:.72rem;
+        }
+        @media (max-width: 480px) { .broto-effects { grid-template-columns: 1fr; } }
+
         .snackbar {
             position: fixed;
             bottom: 20px;
@@ -197,6 +235,134 @@
             max-width: 90%;
             text-align: center;
         }
+
+        .conditions-active-box {
+            background: rgba(140, 0, 0, 0.18);
+            border: 1px solid #7f1d1d;
+        }
+        .conditions-active-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-top: 8px;
+        }
+        .condition-chip {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: #3a1717;
+            border: 1px solid #8b2d2d;
+            color: #ffb3b3;
+            border-radius: 999px;
+            padding: 4px 8px;
+            font-size: 0.72rem;
+            font-weight: bold;
+        }
+        .condition-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 8px;
+        }
+        .condition-card {
+            background: var(--card-bg);
+            border: 1px solid #333;
+            border-radius: 8px;
+            padding: 10px;
+        }
+        .condition-card.active {
+            border-color: var(--accent-red);
+            background: rgba(211, 47, 47, 0.12);
+        }
+        .condition-card.auto {
+            border-color: var(--accent-amber);
+        }
+        .condition-top {
+            display: flex;
+            justify-content: space-between;
+            gap: 8px;
+            align-items: flex-start;
+        }
+        .condition-name {
+            font-weight: bold;
+            font-size: 0.9rem;
+        }
+        .condition-category {
+            font-size: 0.68rem;
+            color: var(--text-muted);
+            margin-top: 2px;
+        }
+        .condition-desc {
+            margin-top: 6px;
+            font-size: 0.78rem;
+            color: var(--text-muted);
+            line-height: 1.35;
+        }
+        .condition-btn {
+            border: none;
+            border-radius: 4px;
+            padding: 5px 8px;
+            cursor: pointer;
+            font-size: 0.72rem;
+            font-weight: bold;
+            background: #444;
+            color: #fff;
+            white-space: nowrap;
+        }
+        .condition-card.active .condition-btn { background: var(--accent-red); }
+        .condition-btn:disabled { opacity: 0.55; cursor: default; }
+        .condition-extra { margin-top: 8px; text-align: right; }
+
+
+        /* Motor de combate, atributos e efeitos temporários */
+        .combat-card { background:#171f2b; border:1px solid #455a64; }
+        .combat-line { display:flex; justify-content:space-between; align-items:center; gap:8px; flex-wrap:wrap; }
+        .combat-badge { font-size:.78rem; color:#cfd8dc; }
+        .effect-list { display:flex; flex-direction:column; gap:6px; margin-top:8px; }
+        .effect-item { background:rgba(255,255,255,.04); border:1px solid #3a3a3a; border-radius:6px; padding:7px 8px; font-size:.76rem; }
+        .effect-meta { color:var(--text-muted); font-size:.68rem; margin-top:2px; }
+        .attr-main { display:flex; align-items:center; gap:6px; }
+        .attr-value { min-width:18px; text-align:center; font-weight:bold; color:var(--accent-amber); }
+        .attr-temp { color:#81c784; font-size:.66rem; font-weight:bold; }
+        .audit-mini { font-size:.76rem; color:var(--text-muted); }
+        .warning-line { color:#ffb74d; font-size:.73rem; margin-top:5px; }
+        .disabled-panel { opacity:.55; }
+
+        /* Visão geral refinada */
+        .combat-sections { display:grid; grid-template-columns:1fr; gap:8px; margin-top:10px; }
+        .combat-group { border:1px solid #3a3a3a; border-radius:7px; padding:8px; background:rgba(255,255,255,.025); }
+        .combat-group-title { font-size:.76rem; font-weight:800; text-transform:uppercase; letter-spacing:.5px; margin-bottom:6px; }
+        .combat-passive .combat-group-title { color:#81c784; }
+        .combat-active .combat-group-title { color:#64b5f6; }
+        .combat-disadv .combat-group-title { color:#ef9a9a; }
+        .combat-empty { color:var(--text-muted); font-size:.72rem; font-style:italic; }
+        .combat-action { display:flex; gap:5px; flex-wrap:wrap; margin-top:5px; }
+        .combat-mini-btn { background:#333; color:#fff; border:0; border-radius:4px; padding:4px 7px; font-size:.68rem; cursor:pointer; }
+        .combat-mini-btn:disabled { opacity:.45; cursor:not-allowed; }
+        .attr-block { padding:3px 0; }
+        .attr-source { font-size:8px; color:var(--text-muted); margin-top:1px; line-height:1.25; }
+        .hab-toggle { background:#333; color:#ddd; border:1px solid #555; border-radius:4px; padding:4px 8px; cursor:pointer; font-size:.72rem; }
+        .hab-full { display:none; margin-top:8px; padding:9px; border-radius:6px; background:rgba(0,0,0,.25); border-left:3px solid #616161; font-size:.79rem; line-height:1.48; color:#ddd; white-space:pre-line; }
+        .damage-roll-row { display:flex; justify-content:space-between; align-items:flex-start; gap:12px; padding:4px 0; border-bottom:1px solid rgba(255,255,255,.05); }
+        .damage-roll-row:last-child { border-bottom:0; }
+        .damage-source { color:#d7d7d7; }
+        .damage-dice { color:var(--accent-amber); font-weight:bold; text-align:right; white-space:nowrap; }
+        .damage-fixed-row { display:flex; justify-content:space-between; gap:12px; padding:5px 0; margin-top:3px; border-top:1px dashed rgba(255,179,0,.28); }
+        .damage-fixed { color:#ffcc80; font-weight:bold; text-align:right; white-space:nowrap; }
+        .damage-total { margin-top:8px; padding:8px 9px; border-radius:6px; background:rgba(255,179,0,.08); border:1px solid rgba(255,179,0,.28); font-size:.78rem; }
+        .damage-total-line { display:flex; justify-content:space-between; gap:10px; margin:2px 0; }
+        .turn-pe-box { margin-top:10px; padding:8px; border-radius:7px; border:1px solid #40566b; background:rgba(0,0,0,.2); }
+        .turn-pe-head { display:flex; justify-content:space-between; gap:10px; align-items:center; flex-wrap:wrap; }
+        .turn-pe-list { display:flex; flex-direction:column; gap:4px; margin-top:6px; }
+        .turn-pe-item { display:flex; justify-content:space-between; gap:10px; font-size:.72rem; padding:4px 6px; border-radius:4px; background:rgba(255,255,255,.035); }
+        .turn-pe-total { color:#81c784; font-weight:800; }
+        .turn-pe-summary { font-size:.68rem; color:var(--text-muted); margin-top:2px; line-height:1.35; }
+        .history-box { margin-top:8px; border:1px solid #3a3a3a; border-radius:7px; padding:8px; background:rgba(255,255,255,.02); }
+        .history-head { display:flex; justify-content:space-between; align-items:center; gap:8px; }
+        .history-list { margin-top:6px; display:flex; flex-direction:column; gap:3px; }
+        .history-item { font-size:.69rem; color:#cfd8dc; padding:4px 6px; border-radius:4px; background:rgba(255,255,255,.03); }
+        .history-meta { color:var(--text-muted); font-size:.64rem; margin-right:5px; }
+        .save-indicator { font-size:.64rem; color:#81c784; margin-top:4px; text-align:right; }
+
     </style>
 </head>
 <body>
@@ -204,19 +370,59 @@
 <div class="container">
     <header>UNDEAD RPG - Ficha do Josias</header>
 
-    <!-- Alerta Colosso -->
-    <div id="colossoAlert" class="alert-box colosso-alert">
-        <span style="font-size: 0.78rem;">FORMA COLOSSO ATIVA! Manoplas desativadas. Ataques usam d12 de Força.</span>
-        <div style="display:flex; gap:6px; align-items:center;">
-            <button onclick="usarImpacto()" style="background:var(--accent-amber); color:#000; border:none; padding:4px 8px; border-radius:4px; font-weight:bold; font-size:0.75rem; cursor:pointer;">Impacto Sísmico (4PE)</button>
-            <button onclick="toggleColosso()" style="background:var(--accent-red); color:#fff; border:none; padding:4px 8px; border-radius:4px; font-size:0.75rem; cursor:pointer;">Encerrar</button>
+    <!-- Controle Geral de Combate -->
+    <div class="card combat-card">
+        <div class="combat-line">
+            <div>
+                <div style="font-weight:bold; color:#cfd8dc;">⚔️ Controle de Combate</div>
+                <div id="txtCenaRodada" class="combat-badge">Fora de combate</div>
+            </div>
+            <div style="display:flex; gap:6px; flex-wrap:wrap;">
+                <button id="btnIniciarCena" class="action-btn" onclick="iniciarCena()">Iniciar Cena</button>
+                <button id="btnProximaRodada" class="action-btn" onclick="proximaRodada()" style="display:none; background:#1565c0;">Próxima Rodada</button>
+                <button id="btnEncerrarCena" class="action-btn" onclick="encerrarCena()" style="display:none; background:#555;">Encerrar Cena</button>
+            </div>
+        </div>
+        <div id="turnPeBox" class="turn-pe-box" style="display:none;">
+            <div class="turn-pe-head">
+                <div>
+                    <div style="font-size:.76rem;font-weight:800;color:#b3e5fc;">💠 PE planejado</div>
+                    <div id="turnPeStatus" class="effect-meta">Nenhuma habilidade selecionada.</div>
+                </div>
+                <div style="display:flex;gap:6px;flex-wrap:wrap;justify-content:flex-end;">
+                    <button id="btnCancelarPeTurno" class="action-btn" onclick="cancelarTodosGastos()" style="display:none;background:#6d4c41;">Cancelar tudo</button>
+                    <button id="btnConfirmarPeTurno" class="action-btn" onclick="confirmarGastoTurno()" style="display:none;background:#2e7d32;">Confirmar ações / pagar PE</button>
+                </div>
+            </div>
+            <div id="turnPeLista" class="turn-pe-list"></div>
+        </div>
+        <div id="historyBox" class="history-box">
+            <div class="history-head">
+                <div style="font-size:.76rem;font-weight:800;color:#cfd8dc;">🧾 Histórico de combate</div>
+                <div style="display:flex;gap:5px;">
+                    <button class="combat-mini-btn" onclick="limparHistorico()">Limpar</button>
+                    <button class="combat-mini-btn" onclick="resetarFicha()" style="background:#5d2b2b;">Resetar ficha</button>
+                </div>
+            </div>
+            <div id="historicoCombate" class="history-list"></div>
+            <div id="saveIndicator" class="save-indicator">Salvamento automático ativo</div>
+        </div>
+        <div class="combat-sections">
+            <div class="combat-group combat-passive">
+                <div class="combat-group-title">Passivos gerados em combate</div>
+                <div id="combatePassivos" class="effect-list"></div>
+            </div>
+            <div class="combat-group combat-active">
+                <div class="combat-group-title">Ações e efeitos ativos</div>
+                <div id="combateAtivos" class="effect-list"></div>
+            </div>
+            <div class="combat-group combat-disadv">
+                <div class="combat-group-title">Desvantagens e condições</div>
+                <div id="combateDesvantagens" class="effect-list"></div>
+            </div>
         </div>
     </div>
 
-    <!-- Alerta Machucado -->
-    <div id="machucadoAlert" class="alert-box machucado-alert">
-        <span>⚠️ POTÊNCIA MÁXIMA ATIVA! Defesas dobradas, +1d Dano e +5 Bloqueio.</span>
-    </div>
 
     <!-- Seção Superior: Retrato e Recursos -->
     <div class="top-section">
@@ -266,12 +472,12 @@
         <div class="card" style="margin-bottom:0;">
             <div style="font-weight:bold; text-align:center; font-size:0.95rem;">Atributos</div>
             <hr style="border-color:#333; margin:8px 0;">
-            <div class="attr-row"><span>Força</span><span class="dots">●○○○○</span></div>
-            <div class="attr-row"><span>Destreza</span><span class="dots">●○○○○</span></div>
-            <div class="attr-row"><span>Presença</span><span class="dots">●○○○○</span></div>
-            <div class="attr-row"><span>Vitalidade</span><span class="dots">●●○○○</span></div>
-            <div class="attr-row"><span>Intelecto</span><span class="dots">○○○○○</span></div>
-            <div class="attr-row"><span>Poder</span><span class="dots">●●○○○</span></div>
+            <div class="attr-block"><div class="attr-row"><span>Força</span><span class="attr-main"><span id="temp-forca" class="attr-temp"></span><span id="dots-forca" class="dots"></span><span id="val-forca" class="attr-value"></span></span></div><div id="meta-forca" class="attr-source">Base</div></div>
+            <div class="attr-block"><div class="attr-row"><span>Destreza</span><span class="attr-main"><span id="temp-destreza" class="attr-temp"></span><span id="dots-destreza" class="dots"></span><span id="val-destreza" class="attr-value"></span></span></div><div id="meta-destreza" class="attr-source">Base</div></div>
+            <div class="attr-block"><div class="attr-row"><span>Presença</span><span class="attr-main"><span id="temp-presenca" class="attr-temp"></span><span id="dots-presenca" class="dots"></span><span id="val-presenca" class="attr-value"></span></span></div><div id="meta-presenca" class="attr-source">Base</div></div>
+            <div class="attr-block"><div class="attr-row"><span>Vitalidade</span><span class="attr-main"><span id="temp-vitalidade" class="attr-temp"></span><span id="dots-vitalidade" class="dots"></span><span id="val-vitalidade" class="attr-value"></span></span></div><div id="meta-vitalidade" class="attr-source">Base</div></div>
+            <div class="attr-block"><div class="attr-row"><span>Intelecto</span><span class="attr-main"><span id="temp-intelecto" class="attr-temp"></span><span id="dots-intelecto" class="dots"></span><span id="val-intelecto" class="attr-value"></span></span></div><div id="meta-intelecto" class="attr-source">Base</div></div>
+            <div class="attr-block"><div class="attr-row"><span>Poder</span><span class="attr-main"><span id="temp-poder" class="attr-temp"></span><span id="dots-poder" class="dots"></span><span id="val-poder" class="attr-value"></span></span></div><div id="meta-poder" class="attr-source">Base</div></div>
         </div>
 
         <div class="card" style="margin-bottom:0;">
@@ -319,10 +525,11 @@
         </div>
     </div>
 
+
     <!-- Auditoria de Dano -->
     <div class="card audit-card" style="margin-top:12px;">
         <div style="display:flex; align-items:center; gap:6px; color:var(--accent-green); font-weight:bold; font-size:0.95rem;">
-            <span>⚖️</span> Auditoria de Dano para o Ataque
+            <span>🎲</span> Dados do Ataque
         </div>
         <hr style="border-color:var(--accent-green); margin:8px 0;">
         <div id="auditContent" style="display:flex; flex-direction:column; gap:4px; font-size:0.85rem;"></div>
@@ -347,6 +554,8 @@
                 <span style="color:#ff5252;">Rupturas: <span id="txtRupturas">0</span> / 5</span>
             </div>
             <div id="txtRupturaDano" style="font-size:0.75rem; color:var(--accent-amber); margin:4px 0;">Dano da Ruptura (se estourar): 0 de dano puro</div>
+            <div id="txtManoplaEstado" style="font-size:0.72rem; color:var(--text-muted); margin:4px 0;">Manoplas inativas.</div>
+            <div id="txtDanoPendenteManopla" style="display:none; font-size:0.72rem; color:#ff8a80; margin:4px 0;"></div>
             <div style="display:flex; gap:6px; justify-content:center; margin-top:6px; flex-wrap:wrap;">
                 <button onclick="manoplaAcao('ativar')" style="background:#1565c0; color:#fff; border:none; padding:4px 10px; border-radius:4px; font-size:0.75rem; cursor:pointer;">Ativar (2 PE)</button>
                 <button onclick="manoplaAcao('sucesso')" style="background:#2e7d32; color:#fff; border:none; padding:4px 10px; border-radius:4px; font-size:0.75rem; cursor:pointer;">+1 Carga</button>
@@ -363,6 +572,109 @@
     <!-- Habilidades Elementais -->
     <div class="section-header">Habilidades Elementais (Terra)</div>
     <div id="listaHabElemental"></div>
+
+    <!-- Habilidade de Fragmento -->
+    <div class="section-header">Habilidade de Fragmento</div>
+    <div id="brotoContainer" class="card broto-card">
+        <div style="display:flex; justify-content:space-between; align-items:flex-start; gap:8px;">
+            <div>
+                <div style="font-weight:bold; color:#a5d6a7;">🌱 Broto</div>
+                <div class="broto-mini">Fragmento Dominante • Elemento: Vida • Ação Completa • Duração: 4 rodadas</div>
+            </div>
+            <span id="brotoStatus" style="font-size:.72rem; font-weight:bold; color:#81c784;">INATIVO</span>
+        </div>
+        <div style="margin-top:8px; font-size:.8rem; color:var(--text-muted); line-height:1.4;">
+            Ao ficar Machucado, raízes, fibras e cascas podem substituir partes feridas do corpo. Ao ativar, escolha até dois efeitos abaixo. Enquanto transformado, Josias fica <strong style="color:#ce93d8;">Vulnerável a Caos</strong>.
+        </div>
+        <div style="margin-top:7px;"><button id="toggle-broto-full" class="hab-toggle" onclick="toggleTextoBroto()">Ver texto completo</button></div>
+        <div id="brotoTextoCompleto" class="hab-full">Seu corpo se torna substituível. Onde a carne falha, raízes e cascas aprendem a ocupar seu lugar.
+
+Ao ficar Machucado, você pode ativar essa habilidade, e então raízes e fibras vegetais começam a crescer através do seu corpo, perfurando sua carne e remendando feridas. Enquanto estiver transformado, escolha até dois dos seguintes efeitos:
+
+Casca Viva. Você recebe +5 de Defesa Elemental e uma vez por rodada, quando sofrer dano de um ataque corpo a corpo, pode gastar 4 PE. As raízes se entrelaçam ainda mais pelo seu corpo, reduzindo o dano recebido em -10 por ponto de Vitalidade.
+
+Corpo Germinado. As raízes substituem seus músculos para fortificá-los. Enquanto transformado, escolha Força ou Destreza. Você recebe +1 nesse Atributo até o fim da transformação.
+
+Campo Enraizado. Enquanto estiver em contato com uma superfície na qual suas raízes possam se espalhar, você recebe +10 em testes de resistência e não pode ser empurrado, puxado ou derrubado. Além disso, seu deslocamento aumenta.
+
+Seiva Regenerativa. No início do seu turno, a seiva se mistura com seu sangue e você recupera 10 PV por ponto de Poder. Essa regeneração não pode fazer seus PV ultrapassarem seu máximo. Além disso, uma vez por cena, caso seja reduzido a 0 PV enquanto estiver transformado, você pode gastar 8 PE para imediatamente retornar com metade dos seus PV Máximos. Quando isso acontece, a transformação termina imediatamente.
+
+Enquanto estiver transformado, você está Vulnerável a Caos.
+
+Execução: Ação Completa • Gasto: 16 PE • Duração: Quatro rodadas • Fragmento: Dominante • Elemento: Vida</div>
+
+        <div id="brotoConfig">
+            <div style="margin-top:10px; font-size:.78rem; font-weight:bold;">Escolha até 2 efeitos:</div>
+            <div class="broto-effects">
+                <div id="broto-casca" class="broto-effect" onclick="selecionarEfeitoBroto('casca')">
+                    <div class="broto-effect-title">Casca Viva</div>
+                    <div class="broto-effect-desc">+5 Defesa Elemental. 1× por rodada, ao sofrer ataque corpo a corpo, gaste 4 PE para reduzir o dano em 10 por ponto de Vitalidade (atual: <span id="brotoReducaoAtual">20</span>).</div>
+                </div>
+                <div id="broto-corpo" class="broto-effect" onclick="selecionarEfeitoBroto('corpo')">
+                    <div class="broto-effect-title">Corpo Germinado</div>
+                    <div class="broto-effect-desc">Escolha Força ou Destreza e receba +1 nesse atributo até o fim da transformação.</div>
+                    <div id="brotoAtributoEscolha" style="display:none; margin-top:6px;" onclick="event.stopPropagation()">
+                        <select id="brotoAtributo" onchange="atributoBroto=this.value" style="width:100%; background:#222; color:#fff; border:1px solid #555; border-radius:4px; padding:4px;">
+                            <option value="Força">Força</option>
+                            <option value="Destreza">Destreza</option>
+                        </select>
+                    </div>
+                </div>
+                <div id="broto-campo" class="broto-effect" onclick="selecionarEfeitoBroto('campo')">
+                    <div class="broto-effect-title">Campo Enraizado</div>
+                    <div class="broto-effect-desc">Em superfície onde as raízes possam se espalhar: +10 em testes de resistência, não pode ser empurrado, puxado ou derrubado e o deslocamento aumenta.</div>
+                </div>
+                <div id="broto-seiva" class="broto-effect" onclick="selecionarEfeitoBroto('seiva')">
+                    <div class="broto-effect-title">Seiva Regenerativa</div>
+                    <div class="broto-effect-desc">No início do turno, recupera 10 PV por ponto de Poder (atual: 20 PV), sem ultrapassar os PV máximos.</div>
+                </div>
+            </div>
+            <div class="broto-controls">
+                <button id="btnAtivarBroto" class="action-btn" onclick="ativarBroto()">Ativar Broto (16 PE)</button>
+            </div>
+            <div id="brotoRequisito" class="broto-mini" style="margin-top:6px;">Requer: estar Machucado e selecionar 1 ou 2 efeitos.</div>
+        </div>
+
+        <div id="brotoAtivoBox" class="broto-active-box" style="display:none; margin-top:10px; padding:10px; border-radius:7px;">
+            <div style="display:flex; justify-content:space-between; gap:8px; align-items:center;">
+                <strong>🌿 Broto Ativo</strong>
+                <span id="brotoRodadas">4 rodadas restantes</span>
+            </div>
+            <div id="brotoEfeitosAtivos" style="margin-top:6px;"></div>
+            <div class="broto-controls">
+                <button id="btnCascaViva" class="action-btn" onclick="usarCascaViva()" style="display:none;">Casca Viva (4 PE)</button>
+                <button id="btnRetornoBroto" class="action-btn" onclick="retornoBroto()" style="display:none; background:#b71c1c;">Retornar com ½ PV (8 PE)</button>
+                <button class="action-btn" onclick="encerrarBroto('manual')" style="background:#555;">Encerrar</button>
+            </div>
+            <div class="broto-mini" style="margin-top:6px;">O botão geral “Próxima Rodada” controla a duração, reaplica a Seiva Regenerativa no início da nova rodada e libera Casca Viva novamente.</div>
+        </div>
+
+    </div>
+
+
+    <!-- Efeitos Temporários do Mestre -->
+    <div class="section-header">Efeitos Temporários</div>
+    <div class="card">
+        <div style="font-size:.78rem; color:var(--text-muted); line-height:1.4;">Use para bônus ou penalidades definidos pelo Mestre. A duração é descontada pelo botão geral <strong>Próxima Rodada</strong>.</div>
+        <div style="display:grid; grid-template-columns:1.4fr .8fr .8fr .7fr; gap:6px; margin-top:8px;">
+            <input id="efeitoNome" placeholder="Nome do efeito" style="background:#222;color:#fff;border:1px solid #555;border-radius:4px;padding:6px;min-width:0;">
+            <select id="efeitoAtributo" style="background:#222;color:#fff;border:1px solid #555;border-radius:4px;padding:6px;min-width:0;">
+                <option value="">Sem atributo</option><option value="forca">Força</option><option value="destreza">Destreza</option><option value="presenca">Presença</option><option value="vitalidade">Vitalidade</option><option value="intelecto">Intelecto</option><option value="poder">Poder</option>
+            </select>
+            <input id="efeitoValor" type="number" value="1" step="1" title="Bônus/penalidade" style="background:#222;color:#fff;border:1px solid #555;border-radius:4px;padding:6px;min-width:0;">
+            <input id="efeitoDuracao" type="number" value="1" min="1" step="1" title="Rodadas" style="background:#222;color:#fff;border:1px solid #555;border-radius:4px;padding:6px;min-width:0;">
+        </div>
+        <div style="text-align:right; margin-top:7px;"><button class="action-btn" onclick="adicionarEfeitoTemporario()">Adicionar efeito</button></div>
+        <div id="listaEfeitosTemporarios" class="effect-list"></div>
+    </div>
+
+    <!-- Desvantagens e Condições -->
+    <div class="section-header">Desvantagens e Condições</div>
+    <div id="condicoesAtivasBox" class="card conditions-active-box" style="display:none;">
+        <div style="font-weight:bold; color:#ff8a80;">⚠️ Condições Ativas</div>
+        <div id="condicoesAtivasLista" class="conditions-active-list"></div>
+    </div>
+    <div id="listaCondicoes"></div>
 
 </div>
 
@@ -389,24 +701,337 @@
     let defMentalExtra = 0;
     let defElementalExtra = 0;
 
+    // Atributos-base do personagem. Todo bônus temporário é calculado por cima destes valores.
+    const atributosBase = { forca: 1, destreza: 1, presenca: 1, vitalidade: 2, intelecto: 0, poder: 2 };
+    const nomesAtributos = { forca: "Força", destreza: "Destreza", presenca: "Presença", vitalidade: "Vitalidade", intelecto: "Intelecto", poder: "Poder" };
+
+    // Controle geral da cena e da rodada (nesta mesa, turno e rodada são tratados como a mesma unidade).
+    let combateAtivo = false;
+    let numeroCena = 0;
+    let rodadaAtual = 0;
+    let proximoIdEfeito = 1;
+    let efeitosTemporarios = [];
+    let gastosPeTurno = [];
+    let proximoIdGastoPe = 1;
+    let historicoCombate = [];
+    const STORAGE_KEY = "undead_rpg_josias_estado_v3";
+
+    // Estados de habilidades/equipamentos ligados à cena e às rodadas.
+    let inquebravelAtivo = false;
+    let manoplasAtivas = false;
+    let manoplasRetraidasRodadas = 0;
+    let danoPendenteManopla = 0;
+
+    // Estado da habilidade de Fragmento: Broto
+    let brotoAtivo = false;
+    let brotoRodadasRestantes = 0;
+    let brotoEfeitosSelecionados = new Set();
+    let atributoBroto = "Força";
+    let cascaVivaUsadaNaRodada = false;
+    let retornoBrotoUsadoNaCena = false;
+
+    const condicoesAtivas = new Set();
+
     const imgNormal = 'normal.jpeg'; // Confirme se o arquivo na pasta é exatamente .jpeg ou .jpg
     const imgMachucado = 'machucado.png';
     const imgColosso = 'colosso.png';
 
     const habilidadesClasse = [
-        { nivel: 0, nome: "Vitalidade de Ferro", custo: 0, tipo: "Passiva", desc: "Você recebe 2 pontos de Defesa Física para cada ponto de Vitalidade que possui. Além disso, ganha +10 PV iniciais e +5 PV a cada novo marco de EXP." },
-        { nivel: 20, nome: "Escudo Humano", custo: 4, tipo: "Ativa", desc: "Quando um aliado dentro de um alcance curto for alvo de um ataque, você pode gastar 4 PE ocupar o seu lugar." },
-        { nivel: 40, nome: "Inquebrável", custo: 4, tipo: "Ativa", desc: "Você pode gastar 4 PE no início de uma cena para ser imune a condições físicas até o fim dela." },
-        { nivel: 60, nome: "Potência Máxima", custo: 0, tipo: "Passiva (Postura)", desc: "Quando você ficar Machucado, atinge sua Potência Máxima. Ataques causam +1d, defesas/resistências são dobradas e ganha +5 em Bloqueio." },
-        { nivel: 80, nome: "Homem de Aço", custo: 0, tipo: "Passiva", desc: "Ao sofrer dano corpo a corpo, acumula ponto de dor. No máximo, causa +5 de dano por ponto." },
-        { nivel: 99, nome: "Invencível", custo: 0, tipo: "Passiva", desc: "Mesmo com seus PV reduzidos a 0, você não cai imediatamente." }
+        {
+            nivel: 0, nome: "Vitalidade de Ferro", custo: 0, tipo: "Passiva",
+            desc: "Você recebe 2 pontos de Defesa Física para cada ponto de Vitalidade e ganha PV adicionais por progressão.",
+            descCompleta: `Você foi reconstruído para a violência. Cicatrizes são seu registro do que seu corpo é capaz de aguentar.\n\nVocê recebe 2 pontos de Defesa Física para cada ponto de Vitalidade que possui. Além disso, você ganha +10 PV iniciais e +5 PV a cada novo marco de EXP (20%, 40%, etc.).`
+        },
+        {
+            nivel: 20, nome: "Escudo Humano", custo: 4, tipo: "Ativa",
+            desc: "Quando um aliado em alcance curto for alvo de um ataque, gaste 4 PE para ocupar o lugar dele.",
+            descCompleta: `Seu corpo reage antes da sua mente. Diante de uma ameaça a um companheiro, você se projeta no caminho na frente dele, servindo como um escudo vivo.\n\nQuando um aliado dentro de um alcance curto for alvo de um ataque, você pode gastar 4 PE ocupar o seu lugar. Você torna-se o novo alvo do ataque e pode escolher entre tomar o dano ou realizar o teste em seu lugar. Se realizar um teste e falhar, tanto você quanto o seu aliado sofrem o ataque.`
+        },
+        {
+            nivel: 40, nome: "Inquebrável", custo: 4, tipo: "Ativa (Cena)",
+            desc: "No início da cena, gaste 4 PE para ficar imune a condições físicas mundanas até o fim dela.",
+            descCompleta: `A dor é um velho amigo. Sua resistência o torna imune a condições mundanas.\n\nVocê pode gastar 4 PE no início de uma cena para ser imune a condições físicas até o fim dela. Além disso, durante o uso da habilidade, você pode gastar +2 PE para ter um teste de resistência com outras condições que não sejam sobrenaturais. Se passar, você evita a condição.`
+        },
+        {
+            nivel: 60, nome: "Potência Máxima", custo: 0, tipo: "Passiva (Postura)",
+            desc: "Ao ficar Machucado, ataques corpo a corpo recebem +1d físico, defesas/resistências dobram e Bloqueio recebe +5.",
+            descCompleta: `Quanto mais você é pressionado, mais sua força se intensifica, transformando a dor em poder bruto.\n\nQuando você ficar Machucado (quando PV cair para metade ou menos) você atinge sua Potência Máxima. Neste estado seus ataques corpo a corpo causam +1d de dano físico e sua todas as suas defesas e resistências são dobradas. Além disso, você recebe +5 em testes de Bloqueio.`
+        },
+        {
+            nivel: 80, nome: "Homem de Aço", custo: 0, tipo: "Passiva",
+            desc: "Ao sofrer dano corpo a corpo, acumula Dor até o limite de Vitalidade; ao completar, o próximo ataque recebe dano adicional.",
+            descCompleta: `A dor que você sofre nunca se dissipa. Ela é absorvida, compactada e devolvida com ódio. Cada golpe sofrido é um empréstimo que você cobra com juros.\n\nSempre que você sofrer dano de um ataque corpo a corpo, você acumula 1 ponto de dor (máximo igual seus pontos de Vitalidade). Sempre que alcançar o máximo, no próximo ataque você causa +5 de dano por ponto acumulado.`
+        },
+        {
+            nivel: 99, nome: "Invencível", custo: 0, tipo: "Passiva",
+            desc: "Ao chegar a 0 PV, você pode continuar de pé e faz testes de Vitalidade para persistir.",
+            descCompleta: `Você ainda caminha entre humanos, mas há muito tempo deixou de ser um deles. Seu corpo só reconhece a necessidade de continuar em pé.\n\nMesmo com seus PV reduzidos a 0, você não cai imediatamente. Seu corpo persiste na luta, se recusando a ceder. No início de cada rodada, você deve realizar um teste de Vitalidade (DT 25). Você não entra em Morrendo e se mantém de pé. Enquanto estiver nesse estado, sempre que for atingido, você deve realizar mais um teste de Vitalidade (DT 25) para continuar lutando. Se o combate terminar enquanto você ainda estiver nesse estado, você sobrevive com 1 PV.`
+        }
     ];
 
     const habilidadesElementais = [
-        { nivel: 10, nome: "Pedrada!", custo: 0, tipo: "Passiva", desc: "A terra pode ser o abrigo de alguns, mas é a ruína de outros. Causa +1d8 de dano físico." },
-        { nivel: 30, nome: "Porco Espinho", custo: 4, tipo: "Reação", desc: "Ao falhar em Reação, gasta 4 PE para desferir espinhos de pedra. O alvo sofre 4d8 de dano elemental." },
-        { nivel: 50, nome: "Colosso", custo: 14, tipo: "Ativa (Cena)", desc: "Recebe metade da vida máxima em PV Temporários, +5 de Bloqueio e ataques causam d12/Força. No estado, gasta +4 PE ao atingir alvo para teste de Vitalidade vs Poder (4d12 físico + 2d20 elemental, Enfraquecido e Vulnerável)." }
+        {
+            nivel: 10, nome: "Pedrada!", custo: 0, tipo: "Passiva",
+            desc: "Seus ataques recebem +1d8 de dano físico de Terra.",
+            descCompleta: `A terra pode ser o abrigo de alguns, mas é a ruína de outros. Causa +1d8 de dano físico.`
+        },
+        {
+            nivel: 30, nome: "Porco Espinho", custo: 4, tipo: "Reação",
+            desc: "Ao falhar em Reação, gaste 4 PE para causar 4d8 de dano elemental com espinhos de pedra.",
+            descCompleta: `Ao falhar em Reação, gasta 4 PE para desferir espinhos de pedra. O alvo sofre 4d8 de dano elemental.`
+        },
+        {
+            nivel: 50, nome: "Colosso", custo: 14, tipo: "Ativa (Cena)",
+            desc: "Transforme-se em um colosso de Terra: PV temporários, +5 Bloqueio e ataques baseados em d12 por Força.",
+            descCompleta: `Rochas partidas, areias se erguem ao seu redor, atraídos por sua presença. Seu corpo desaparece sob camadas de cascalho e pedra até que nada reste do humano que existia ali. Em seu lugar surge um colosso de Terra viva, uma manifestação da resistência brutal e da força implacável.\n\nUma vez por rodada, ao atingir um alvo com um ataque corpo a corpo nesse estado, você pode gastar +4 PE para forçá-lo a realizar um teste de Vitalidade contra seu Poder.\n\nFalha: O alvo sofre 4d12 de dano físico e 2d20 de dano elemental, além de ficar Enfraquecido e Vulnerável até o final da próxima rodada.\n\nSucesso: O alvo sofre metade do dano físico, evita as condições e o dano elemental.\n\nEnquanto permanecer transformado, você recebe metade da vida máxima em PV Temporários, +5 de Bloqueio e seus ataques usam d12 por ponto de Força.`
+        }
     ];
+
+    const desvantagens = [
+        { nome: "Agarrado", categoria: "Física", desc: "Movimentação e ações físicas ficam limitadas enquanto o personagem estiver preso ou contido." },
+        { nome: "Amedrontado", categoria: "Mental", desc: "Sofre 1d de desvantagem em todos os testes enquanto permanecer amedrontado." },
+        { nome: "Asfixiado", categoria: "Física", desc: "Está com dificuldade ou impossibilidade de respirar; acompanhe os efeitos e testes exigidos pela cena." },
+        { nome: "Atordoado", categoria: "Mental", desc: "Está desorientado e com dificuldade de agir normalmente durante a condição." },
+        { nome: "Caído", categoria: "Física", desc: "Sofre -5 em testes de Força e Destreza enquanto estiver caído." },
+        { nome: "Apavorado", categoria: "Mental", desc: "O medo é extremo; mantenha visíveis as restrições de ação e aproximação impostas pela condição." },
+        { nome: "Cego", categoria: "Sentidos", desc: "Falha automaticamente em testes que dependam exclusivamente da visão e sofre as demais penalidades relacionadas." },
+        { nome: "Cercado", categoria: "Tática", desc: "Está pressionado por múltiplos inimigos; aplique os efeitos táticos previstos para a situação." },
+        { nome: "Confuso", categoria: "Mental", desc: "No início do turno, role 1d6: 1 movimento aleatório; 2–3 não faz nada; 4–5 ataca o ser mais próximo; 6 recupera-se.", especial: "confuso" },
+        { nome: "Despreparado", categoria: "Tática", desc: "Está sem preparação adequada para reagir à situação; aplique a penalidade indicada pela condição." },
+        { nome: "Cansado", categoria: "Física", desc: "Sofre 1d de desvantagem em testes que utilizem atributos." },
+        { nome: "Enfraquecido", categoria: "Física", desc: "Sofre 1d de desvantagem em testes de Força e Destreza. Todo gasto de PE recebe +4 PE enquanto esta condição estiver ativa.", mecanica: "pe+4" },
+        { nome: "Enlouquecendo", categoria: "Mental", desc: "Está à beira do colapso mental; acompanhe os efeitos narrativos e mecânicos definidos pelo sistema." },
+        { nome: "Envenenado", categoria: "Física", desc: "Está sob efeito de veneno; acompanhe dano, testes ou duração conforme a fonte do envenenamento." },
+        { nome: "Desprevenido", categoria: "Tática", desc: "Foi pego sem reação adequada; aplique as penalidades defensivas previstas pela condição." },
+        { nome: "Hemorragia", categoria: "Física", desc: "Está sofrendo perda contínua de sangue; acompanhe o dano ou testes exigidos até a condição ser encerrada." },
+        { nome: "Incapaz", categoria: "Física", desc: "Não consegue executar determinadas ações enquanto a condição estiver ativa." },
+        { nome: "Incendiado", categoria: "Física", desc: "Está em chamas; acompanhe o dano contínuo e a ação necessária para apagar o fogo." },
+        { nome: "Inconsciente", categoria: "Física", desc: "Não pode realizar ações ou testes voluntários enquanto estiver inconsciente." },
+        { nome: "Fascinado", categoria: "Mental", desc: "A atenção está completamente presa a uma fonte; aplique as limitações previstas pela condição." },
+        { nome: "Machucado", categoria: "Automática", desc: "Ativa automaticamente quando a Vida Real chega à metade da Vida Máxima ou menos. No Josias, ativa Potência Máxima.", auto: true },
+        { nome: "Morrendo", categoria: "Física", desc: "Está em estado crítico; acompanhe os testes, turnos ou efeitos de morte conforme as regras da mesa." },
+        { nome: "Paralisado", categoria: "Física", desc: "Não consegue se mover normalmente e sofre as restrições previstas para a condição." },
+        { nome: "Perplexo", categoria: "Mental", desc: "Sofre -5 no primeiro teste de Reação enquanto a condição estiver relevante." },
+        { nome: "Lento", categoria: "Física", desc: "Seu deslocamento é reduzido pela metade enquanto a condição estiver ativa." },
+        { nome: "Surdo", categoria: "Sentidos", desc: "Falha automaticamente em testes que dependam exclusivamente da audição e sofre as demais penalidades relacionadas." },
+        { nome: "Vulnerável", categoria: "Tática", desc: "Defesas ficam comprometidas/anuladas conforme a regra da condição e o personagem sofre +10 de dano recebido.", mecanica: "vulneravel" },
+        { nome: "Sangrando", categoria: "Física", desc: "Está perdendo sangue; acompanhe os efeitos contínuos e o método de estabilização definido pela condição." }
+    ];
+
+
+    function normalizarAtributo(nome) {
+        const mapa = { "Força":"forca", "Destreza":"destreza", "Presença":"presenca", "Vitalidade":"vitalidade", "Intelecto":"intelecto", "Poder":"poder" };
+        return mapa[nome] || nome;
+    }
+
+    function bonusAtributoTemporario(nome) {
+        const chave = normalizarAtributo(nome);
+        let bonus = 0;
+        if (brotoAtivo && brotoEfeitosSelecionados.has("corpo") && normalizarAtributo(atributoBroto) === chave) bonus += 1;
+        efeitosTemporarios.forEach(e => { if (e.atributo === chave) bonus += e.valor; });
+        return bonus;
+    }
+
+    function getAtributo(nome) {
+        const chave = normalizarAtributo(nome);
+        return Math.max(0, (atributosBase[chave] || 0) + bonusAtributoTemporario(chave));
+    }
+
+    function desenharPontos(valor) {
+        const maxVisual = Math.max(5, valor);
+        return "●".repeat(valor) + "○".repeat(Math.max(0, maxVisual - valor));
+    }
+
+    function resumoContextoHistorico() {
+        if (combateAtivo) return `Cena ${numeroCena} • Rodada ${rodadaAtual}`;
+        return 'Fora de combate';
+    }
+
+    function registrarHistorico(texto) {
+        historicoCombate.unshift({ contexto: resumoContextoHistorico(), texto, ts: Date.now() });
+        historicoCombate = historicoCombate.slice(0, 10);
+    }
+
+    function limparHistorico() {
+        historicoCombate = [];
+        atualizarTudo();
+    }
+
+    function salvarEstado() {
+        try {
+            const estado = {
+                vidaAtual, vidaMaxima, vidaTemp, sanidadeAtual, sanidadeMaxima, peAtual, peMaximo, nexAtual,
+                coleteAtivo, colossoAtivo, cargasManoplas, rupturasManoplas,
+                defFisicaExtra, defMentalExtra, defElementalExtra,
+                combateAtivo, numeroCena, rodadaAtual, proximoIdEfeito, efeitosTemporarios,
+                gastosPeTurno, proximoIdGastoPe, historicoCombate,
+                inquebravelAtivo, manoplasAtivas, manoplasRetraidasRodadas, danoPendenteManopla,
+                brotoAtivo, brotoRodadasRestantes, brotoEfeitosSelecionados: [...brotoEfeitosSelecionados],
+                atributoBroto, cascaVivaUsadaNaRodada, retornoBrotoUsadoNaCena,
+                condicoesAtivas: [...condicoesAtivas]
+            };
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(estado));
+        } catch (e) { console.warn('Falha ao salvar estado:', e); }
+    }
+
+    function carregarEstado() {
+        try {
+            const raw = localStorage.getItem(STORAGE_KEY);
+            if (!raw) return;
+            const e = JSON.parse(raw);
+            const set = (k, v) => { if (v !== undefined) return v; return k; };
+            vidaAtual=set(vidaAtual,e.vidaAtual); vidaMaxima=set(vidaMaxima,e.vidaMaxima); vidaTemp=set(vidaTemp,e.vidaTemp);
+            sanidadeAtual=set(sanidadeAtual,e.sanidadeAtual); sanidadeMaxima=set(sanidadeMaxima,e.sanidadeMaxima);
+            peAtual=set(peAtual,e.peAtual); peMaximo=set(peMaximo,e.peMaximo); nexAtual=set(nexAtual,e.nexAtual);
+            coleteAtivo=set(coleteAtivo,e.coleteAtivo); colossoAtivo=set(colossoAtivo,e.colossoAtivo);
+            cargasManoplas=set(cargasManoplas,e.cargasManoplas); rupturasManoplas=set(rupturasManoplas,e.rupturasManoplas);
+            defFisicaExtra=set(defFisicaExtra,e.defFisicaExtra); defMentalExtra=set(defMentalExtra,e.defMentalExtra); defElementalExtra=set(defElementalExtra,e.defElementalExtra);
+            combateAtivo=set(combateAtivo,e.combateAtivo); numeroCena=set(numeroCena,e.numeroCena); rodadaAtual=set(rodadaAtual,e.rodadaAtual);
+            proximoIdEfeito=set(proximoIdEfeito,e.proximoIdEfeito); efeitosTemporarios=Array.isArray(e.efeitosTemporarios)?e.efeitosTemporarios:efeitosTemporarios;
+            gastosPeTurno=Array.isArray(e.gastosPeTurno)?e.gastosPeTurno:gastosPeTurno; proximoIdGastoPe=set(proximoIdGastoPe,e.proximoIdGastoPe);
+            historicoCombate=Array.isArray(e.historicoCombate)?e.historicoCombate:historicoCombate;
+            inquebravelAtivo=set(inquebravelAtivo,e.inquebravelAtivo); manoplasAtivas=set(manoplasAtivas,e.manoplasAtivas);
+            manoplasRetraidasRodadas=set(manoplasRetraidasRodadas,e.manoplasRetraidasRodadas); danoPendenteManopla=set(danoPendenteManopla,e.danoPendenteManopla);
+            brotoAtivo=set(brotoAtivo,e.brotoAtivo); brotoRodadasRestantes=set(brotoRodadasRestantes,e.brotoRodadasRestantes);
+            if (Array.isArray(e.brotoEfeitosSelecionados)) brotoEfeitosSelecionados = new Set(e.brotoEfeitosSelecionados);
+            atributoBroto=set(atributoBroto,e.atributoBroto); cascaVivaUsadaNaRodada=set(cascaVivaUsadaNaRodada,e.cascaVivaUsadaNaRodada);
+            retornoBrotoUsadoNaCena=set(retornoBrotoUsadoNaCena,e.retornoBrotoUsadoNaCena);
+            if (Array.isArray(e.condicoesAtivas)) { condicoesAtivas.clear(); e.condicoesAtivas.forEach(c=>condicoesAtivas.add(c)); }
+        } catch (err) { console.warn('Falha ao carregar estado:', err); }
+    }
+
+    function resetarFicha() {
+        if (!confirm('Resetar toda a ficha salva e voltar aos valores iniciais?')) return;
+        localStorage.removeItem(STORAGE_KEY);
+        location.reload();
+    }
+
+    function resumoAcaoPlanejada(g) {
+        switch (g.tipoAcao) {
+            case 'ativar_colosso': return 'Transformação • PV temporários • +5 Bloqueio • ataques em d12 por Força';
+            case 'impacto': return 'No acerto: +4d12 físico + 2d20 elemental';
+            case 'ativar_inquebravel': return 'Imunidade a condições físicas mundanas até o fim da cena';
+            case 'ativar_manoplas': return 'Ativa Intenção das Manoplas';
+            case 'ativar_broto': return `Transformação por 4 rodadas • ${[...brotoEfeitosSelecionados].length || 0} efeito(s) escolhido(s)`;
+            case 'casca_viva': return `Reação defensiva • redução prevista ${g.dados?.reducao ?? 10 * getAtributo('vitalidade')}`;
+            case 'retorno_broto': return `Retorna com ${Math.floor(vidaMaxima/2)} PV e encerra Broto`;
+            default:
+                if (g.nome === 'Escudo Humano') return 'Reação • assume o ataque destinado a um aliado';
+                if (g.nome === 'Porco Espinho') return 'Reação • 4d8 de dano elemental';
+                if (g.nome.includes('Teste extra')) return 'Teste adicional de resistência';
+                return 'Uso de habilidade';
+        }
+    }
+
+    function construirAtaqueAtual() {
+        // Motor universal: cada ataque define dado-base, atributo associado e dado usado pelo atributo.
+        if (colossoAtivo) {
+            return { nome:'Colosso', corpoACorpo:true, baseQtd:0, baseFace:12, atributo:'forca', dadoAtributo:12, tipoBase:'elemental' };
+        }
+        return { nome:'Manoplas • Vontade de Aço', corpoACorpo:true, baseQtd:2, baseFace:8, atributo:'forca', dadoAtributo:8, tipoBase:'físico' };
+    }
+
+    function iniciarCena() {
+        if (combateAtivo) { mostrarSnackbar("Uma cena de combate já está ativa."); return; }
+        combateAtivo = true;
+        numeroCena += 1;
+        rodadaAtual = 1;
+        retornoBrotoUsadoNaCena = false;
+        inquebravelAtivo = false;
+        danoPendenteManopla = 0;
+        registrarHistorico(`Cena ${numeroCena} iniciada.`);
+        mostrarSnackbar(`Cena ${numeroCena} iniciada. Rodada 1.`);
+        atualizarTudo();
+    }
+
+    function aplicarInicioNovaRodada() {
+        // Broto: Seiva no início da nova rodada e Casca Viva liberada novamente.
+        if (brotoAtivo) {
+            cascaVivaUsadaNaRodada = false;
+            if (brotoEfeitosSelecionados.has("seiva")) {
+                const cura = 10 * getAtributo("poder");
+                const antes = vidaAtual;
+                vidaAtual = Math.min(vidaMaxima, vidaAtual + cura);
+                const recuperado = vidaAtual - antes;
+                if (recuperado > 0) { registrarHistorico(`Seiva Regenerativa recuperou ${recuperado} PV.`); mostrarSnackbar(`Nova rodada: Seiva Regenerativa recuperou ${recuperado} PV.`); }
+            }
+            brotoRodadasRestantes -= 1;
+            if (brotoRodadasRestantes <= 0) {
+                brotoAtivo = false;
+                brotoRodadasRestantes = 0;
+                cascaVivaUsadaNaRodada = false;
+            }
+        }
+
+        // Manoplas retraídas após Ruptura.
+        if (manoplasRetraidasRodadas > 0) manoplasRetraidasRodadas -= 1;
+
+        // Efeitos temporários criados pelo Mestre.
+        efeitosTemporarios = efeitosTemporarios
+            .map(e => ({...e, duracao: e.duracao - 1}))
+            .filter(e => e.duracao > 0);
+    }
+
+    function proximaRodada() {
+        if (!combateAtivo) { mostrarSnackbar("Inicie uma cena de combate primeiro."); return; }
+        if (gastosPeTurno.length) { mostrarSnackbar("Há ações/PE planejados. Confirme ou cancele antes de avançar a rodada."); return; }
+        rodadaAtual += 1;
+        aplicarInicioNovaRodada();
+        registrarHistorico(`Rodada ${rodadaAtual} iniciada.`);
+        mostrarSnackbar(`Rodada ${rodadaAtual} iniciada.`);
+        atualizarTudo();
+    }
+
+    function encerrarCena() {
+        if (!combateAtivo) return;
+        if (gastosPeTurno.length) { mostrarSnackbar("Confirme ou cancele as ações planejadas antes de encerrar a cena."); return; }
+        combateAtivo = false;
+        rodadaAtual = 0;
+        inquebravelAtivo = false;
+        retornoBrotoUsadoNaCena = false;
+        efeitosTemporarios = [];
+        if (brotoAtivo) {
+            brotoAtivo = false;
+            brotoRodadasRestantes = 0;
+            cascaVivaUsadaNaRodada = false;
+        }
+        manoplasRetraidasRodadas = 0;
+        danoPendenteManopla = 0;
+        registrarHistorico(`Cena ${numeroCena} encerrada.`);
+        mostrarSnackbar(`Cena ${numeroCena} encerrada. Efeitos de cena e temporários foram limpos.`);
+        atualizarTudo();
+    }
+
+    function adicionarEfeitoTemporario() {
+        if (!combateAtivo) { mostrarSnackbar("Inicie uma cena antes de adicionar um efeito com duração em rodadas."); return; }
+        const nome = (document.getElementById('efeitoNome').value || '').trim() || 'Efeito do Mestre';
+        const atributo = document.getElementById('efeitoAtributo').value;
+        const valor = parseInt(document.getElementById('efeitoValor').value || '0', 10);
+        const duracao = Math.max(1, parseInt(document.getElementById('efeitoDuracao').value || '1', 10));
+        efeitosTemporarios.push({ id: proximoIdEfeito++, nome, atributo, valor: Number.isFinite(valor) ? valor : 0, duracao });
+        document.getElementById('efeitoNome').value = '';
+        registrarHistorico(`${nome} adicionado por ${duracao} rodada(s).`);
+        mostrarSnackbar(`${nome} adicionado por ${duracao} rodada(s).`);
+        atualizarTudo();
+    }
+
+    function removerEfeitoTemporario(id) {
+        efeitosTemporarios = efeitosTemporarios.filter(e => e.id !== id);
+        atualizarTudo();
+    }
+
+    function usarInquebravel() {
+        if (inquebravelAtivo) { mostrarSnackbar("Inquebrável já está ativo nesta cena."); return; }
+        if (!combateAtivo) { mostrarSnackbar("Inquebrável deve ser ativado no início de uma cena."); return; }
+        if (!planejarPE(4, "Ativar Inquebrável", "ativar_inquebravel")) return;
+        mostrarSnackbar("Inquebrável foi adicionado ao planejamento e ficará ativo após a confirmação do gasto.");
+        atualizarTudo();
+    }
+
+    function resistenciaInquebravel() {
+        if (!inquebravelAtivo) { mostrarSnackbar("Inquebrável não está ativo."); return; }
+        planejarPE(2, "Teste extra de Inquebrável", "generica");
+    }
 
     function isMachucado() {
         return vidaAtual <= Math.floor(vidaMaxima / 2);
@@ -439,45 +1064,139 @@
         atualizarTudo();
     }
 
-    function toggleColosso() {
-        if (!colossoAtivo) {
-            if (peAtual >= 14) {
-                peAtual -= 14;
+    function condicaoAtiva(nome) {
+        if (nome === "Machucado") return isMachucado();
+        return condicoesAtivas.has(nome);
+    }
+
+    function calcularCustoPE(custoBase) {
+        return custoBase > 0 && condicaoAtiva("Enfraquecido") ? custoBase + 4 : custoBase;
+    }
+
+    function totalPePlanejado() {
+        return gastosPeTurno.reduce((soma, g) => soma + g.custoFinal, 0);
+    }
+
+    function acaoPlanejada(nomeAcao) {
+        return gastosPeTurno.some(g => g.nome === nomeAcao);
+    }
+
+    function planejarPE(custoBase, nomeAcao, tipoAcao = "generica", dados = {}) {
+        const custoFinal = calcularCustoPE(custoBase);
+        const reservado = totalPePlanejado();
+        const disponivel = peAtual - reservado;
+        if (disponivel < custoFinal) {
+            mostrarSnackbar(`PE Insuficiente para planejar ${nomeAcao}! Disponível após reservas: ${Math.max(0, disponivel)} PE; custo: ${custoFinal} PE.`);
+            return false;
+        }
+        const unicos = new Set(["ativar_colosso", "ativar_inquebravel", "ativar_manoplas", "ativar_broto", "casca_viva", "retorno_broto", "impacto"]);
+        if (unicos.has(tipoAcao) && gastosPeTurno.some(g => g.tipoAcao === tipoAcao)) {
+            mostrarSnackbar(`${nomeAcao} já está planejado.`);
+            return false;
+        }
+        gastosPeTurno.push({ id: proximoIdGastoPe++, nome: nomeAcao, custoBase, custoFinal, tipoAcao, dados });
+        mostrarSnackbar(`${nomeAcao} planejado: ${custoFinal} PE${custoFinal !== custoBase ? " (Enfraquecido +4)" : ""}. Você pode cancelar antes de confirmar.`);
+        atualizarTudo();
+        return true;
+    }
+
+    // Mantido como alias para chamadas genéricas. Agora NUNCA desconta PE imediatamente.
+    function gastarPE(custoBase, nomeAcao, tipoAcao = "generica", dados = {}) {
+        return planejarPE(custoBase, nomeAcao, tipoAcao, dados);
+    }
+
+    function cancelarGasto(id) {
+        const gasto = gastosPeTurno.find(g => g.id === id);
+        if (!gasto) return;
+        gastosPeTurno = gastosPeTurno.filter(g => g.id !== id);
+        mostrarSnackbar(`${gasto.nome} removido do planejamento.`);
+        atualizarTudo();
+    }
+
+    function cancelarTodosGastos() {
+        if (!gastosPeTurno.length) { mostrarSnackbar("Não há ações planejadas para cancelar."); return; }
+        gastosPeTurno = [];
+        mostrarSnackbar("Planejamento de PE cancelado.");
+        atualizarTudo();
+    }
+
+    function executarAcaoPlanejada(g) {
+        switch (g.tipoAcao) {
+            case "ativar_colosso":
                 vidaTemp += Math.floor(vidaMaxima / 2);
                 colossoAtivo = true;
-                mostrarSnackbar("Colosso ativado! +PV Temp e -14 PE");
-            } else {
-                mostrarSnackbar("PE Insuficiente para ativar Colosso!");
-                return;
-            }
+                break;
+            case "ativar_inquebravel":
+                inquebravelAtivo = true;
+                break;
+            case "ativar_manoplas":
+                manoplasAtivas = true;
+                cargasManoplas = 0;
+                rupturasManoplas = 0;
+                break;
+            case "ativar_broto":
+                brotoAtivo = true;
+                brotoRodadasRestantes = 4;
+                cascaVivaUsadaNaRodada = false;
+                break;
+            case "casca_viva":
+                cascaVivaUsadaNaRodada = true;
+                break;
+            case "retorno_broto":
+                vidaAtual = Math.floor(vidaMaxima / 2);
+                retornoBrotoUsadoNaCena = true;
+                encerrarBroto("retorno");
+                break;
+            case "impacto":
+                // O efeito é registrado no ataque; não há dano aplicado automaticamente.
+                break;
+            case "generica":
+            default:
+                break;
+        }
+    }
+
+    function confirmarGastoTurno() {
+        if (!gastosPeTurno.length) { mostrarSnackbar("Não há PE planejado para confirmar."); return; }
+        const total = totalPePlanejado();
+        if (peAtual < total) { mostrarSnackbar(`PE atual insuficiente para confirmar as ações. Necessário: ${total} PE.`); return; }
+        const fila = [...gastosPeTurno];
+        peAtual -= total;
+        gastosPeTurno = [];
+        fila.forEach(executarAcaoPlanejada);
+        registrarHistorico(`${fila.map(g=>g.nome).join(' + ')} • ${total} PE pagos.`);
+        mostrarSnackbar(`${fila.length} ação(ões) confirmada(s): ${total} PE pagos.`);
+        atualizarTudo();
+    }
+
+    function toggleColosso() {
+        if (!colossoAtivo) {
+            planejarPE(14, "Ativar Colosso", "ativar_colosso");
         } else {
             colossoAtivo = false;
+            mostrarSnackbar("Forma Colosso encerrada.");
+            atualizarTudo();
         }
-        atualizarTudo();
     }
 
     function usarImpacto() {
-        if (peAtual >= 4) {
-            peAtual -= 4;
-            mostrarSnackbar("Impacto Sísmico executado! (-4 PE)");
-        } else {
-            mostrarSnackbar("PE Insuficiente para Impacto Sísmico!");
-        }
-        atualizarTudo();
+        planejarPE(4, "Impacto Sísmico", "impacto");
     }
 
     function usarHab(custo, nome) {
-        if (peAtual >= custo) {
-            peAtual -= custo;
-            if (nome === "Colosso") {
-                toggleColosso();
-                return;
-            }
-            mostrarSnackbar(`${nome} usada! (-${custo} PE)`);
-            atualizarTudo();
-        } else {
-            mostrarSnackbar(`PE Insuficiente para usar ${nome}!`);
+        // Colosso possui lógica própria de ativação e custo em toggleColosso().
+        // Por isso, ele deve ser tratado antes do desconto genérico de PE,
+        // evitando que os 14 PE sejam cobrados duas vezes.
+        if (nome === "Colosso") {
+            toggleColosso();
+            return;
         }
+        if (nome === "Inquebrável") {
+            usarInquebravel();
+            return;
+        }
+
+        if (gastarPE(custo, nome)) atualizarTudo();
     }
 
     function manoplaAcao(acao) {
@@ -485,26 +1204,53 @@
             mostrarSnackbar("Impossível usar manoplas na forma Colosso!");
             return;
         }
-        if (acao === 'ativar' && peAtual >= 2) {
-            peAtual -= 2;
-            cargasManoplas = 1;
-        } else if (acao === 'sucesso' && cargasManoplas < 5) {
-            cargasManoplas++;
+        if (manoplasRetraidasRodadas > 0) {
+            mostrarSnackbar(`Manoplas retraídas: faltam ${manoplasRetraidasRodadas} rodada(s).`);
+            return;
+        }
+        if (acao === 'ativar') {
+            if (manoplasAtivas) { mostrarSnackbar("As Manoplas já estão ativas."); return; }
+            if (!planejarPE(2, "Ativar Manoplas", "ativar_manoplas")) return;
+        } else if (acao === 'sucesso') {
+            if (!manoplasAtivas) { mostrarSnackbar("Ative as Manoplas antes de acumular Cargas."); return; }
+            if (cargasManoplas < 5) cargasManoplas++;
         } else if (acao === 'falha') {
+            if (!manoplasAtivas) { mostrarSnackbar("Ative as Manoplas antes de marcar Ruptura."); return; }
             rupturasManoplas++;
-            if (rupturasManoplas >= 5) { cargasManoplas = 0; rupturasManoplas = 0; }
+            if (rupturasManoplas >= 5) {
+                danoPendenteManopla = 5 * (cargasManoplas + rupturasManoplas);
+                condicoesAtivas.add("Sangrando");
+                manoplasAtivas = false;
+                manoplasRetraidasRodadas = 2;
+                cargasManoplas = 0;
+                rupturasManoplas = 0;
+                registrarHistorico(`Ruptura da Vontade • Sangrando • ${danoPendenteManopla} dano puro pendente • retraída 2 rodadas.`);
+                mostrarSnackbar(`Ruptura da Vontade! Sangrando. Dano puro pendente: ${danoPendenteManopla}. Manoplas retraídas por 2 rodadas.`);
+            }
         } else if (acao === 'reset') {
+            manoplasAtivas = false;
             cargasManoplas = 0;
             rupturasManoplas = 0;
+            danoPendenteManopla = 0;
         }
         atualizarTudo();
+    }
+
+    function toggleTextoHabilidade(id) {
+        const box = document.getElementById(`full-${id}`);
+        const btn = document.getElementById(`toggle-${id}`);
+        if (!box || !btn) return;
+        const aberto = box.style.display === 'block';
+        box.style.display = aberto ? 'none' : 'block';
+        btn.innerText = aberto ? 'Ver texto completo' : 'Ocultar texto completo';
     }
 
     function renderizarHabilidades(lista, containerId) {
         const container = document.getElementById(containerId);
         container.innerHTML = '';
-        lista.forEach(hab => {
+        lista.forEach((hab, idx) => {
             let desbloqueada = nexAtual >= hab.nivel;
+            const id = `${containerId}-${idx}`;
             let html = `
                 <div class="hab-card ${desbloqueada ? '' : 'hab-locked'}">
                     <div style="display:flex; justify-content:space-between; align-items:center;">
@@ -512,30 +1258,351 @@
                         ${!desbloqueada ? '<span style="font-size:0.8rem;">🔒</span>' : `<span style="font-size:0.75rem; color:var(--text-muted);">${hab.tipo}</span>`}
                     </div>
                     <div style="font-size:0.8rem; color:${desbloqueada ? 'var(--text-muted)' : '#555'}; margin-top:6px; line-height:1.4;">${hab.desc}</div>
-                    ${desbloqueada && hab.custo > 0 ? `
-                        <div style="text-align:right; margin-top:8px;">
-                            <button onclick="usarHab(${hab.custo}, '${hab.nome}')" class="action-btn">Usar (${hab.custo} PE)</button>
-                        </div>
-                    ` : ''}
-                </div>
-            `;
+                    <div style="display:flex; justify-content:space-between; align-items:center; gap:6px; flex-wrap:wrap; margin-top:8px;">
+                        <button id="toggle-${id}" onclick="toggleTextoHabilidade('${id}')" class="hab-toggle">Ver texto completo</button>
+                        ${desbloqueada && hab.custo > 0 ? `<button onclick="usarHab(${hab.custo}, '${hab.nome}')" class="action-btn" ${hab.nome === 'Inquebrável' && inquebravelAtivo ? 'disabled style="opacity:.5"' : ''}>${hab.nome === 'Inquebrável' && inquebravelAtivo ? 'ATIVO (Cena)' : `Usar (${calcularCustoPE(hab.custo)} PE)`}</button>` : ''}
+                    </div>
+                    <div id="full-${id}" class="hab-full">${hab.descCompleta || hab.desc}</div>
+                </div>`;
             container.innerHTML += html;
         });
     }
 
+
+    function selecionarEfeitoBroto(efeito) {
+        if (brotoAtivo) return;
+        if (brotoEfeitosSelecionados.has(efeito)) {
+            brotoEfeitosSelecionados.delete(efeito);
+        } else {
+            if (brotoEfeitosSelecionados.size >= 2) {
+                mostrarSnackbar("Broto permite escolher no máximo dois efeitos.");
+                return;
+            }
+            brotoEfeitosSelecionados.add(efeito);
+        }
+        atualizarTudo();
+    }
+
+    function ativarBroto() {
+        if (brotoAtivo) return;
+        if (!combateAtivo) {
+            mostrarSnackbar("Inicie uma cena de combate para controlar as 4 rodadas de Broto.");
+            return;
+        }
+        if (!isMachucado()) {
+            mostrarSnackbar("Broto só pode ser ativado enquanto Josias estiver Machucado.");
+            return;
+        }
+        if (brotoEfeitosSelecionados.size < 1 || brotoEfeitosSelecionados.size > 2) {
+            mostrarSnackbar("Escolha 1 ou 2 efeitos de Broto antes de ativar.");
+            return;
+        }
+        if (brotoEfeitosSelecionados.has("corpo")) {
+            const sel = document.getElementById('brotoAtributo');
+            if (sel) atributoBroto = sel.value;
+        }
+        if (!planejarPE(16, "Ativar Broto", "ativar_broto")) return;
+        mostrarSnackbar("Broto foi adicionado ao planejamento. A transformação só começa quando você confirmar o gasto.");
+        atualizarTudo();
+    }
+
+    function encerrarBroto(motivo = "manual") {
+        if (!brotoAtivo) return;
+        brotoAtivo = false;
+        brotoRodadasRestantes = 0;
+        cascaVivaUsadaNaRodada = false;
+        if (motivo === "duracao") mostrarSnackbar("Broto terminou ao fim da quarta rodada.");
+        else if (motivo === "retorno") mostrarSnackbar("Broto terminou após o retorno pela Seiva Regenerativa.");
+        else mostrarSnackbar("Transformação Broto encerrada.");
+        atualizarTudo();
+    }
+
+
+    function usarCascaViva() {
+        if (!brotoAtivo || !brotoEfeitosSelecionados.has("casca")) return;
+        if (cascaVivaUsadaNaRodada) {
+            mostrarSnackbar("Casca Viva já foi usada nesta rodada.");
+            return;
+        }
+        const reducao = 10 * getAtributo("vitalidade");
+        if (!planejarPE(4, "Casca Viva", "casca_viva", { reducao })) return;
+        mostrarSnackbar(`Casca Viva planejada. Após confirmar, a redução disponível nesta rodada será ${reducao}.`);
+        atualizarTudo();
+    }
+
+    function retornoBroto() {
+        if (!brotoAtivo || !brotoEfeitosSelecionados.has("seiva")) return;
+        if (vidaAtual > 0) {
+            mostrarSnackbar("O retorno da Seiva Regenerativa só pode ser usado ao ser reduzido a 0 PV.");
+            return;
+        }
+        if (retornoBrotoUsadoNaCena) {
+            mostrarSnackbar("O retorno da Seiva Regenerativa já foi usado nesta cena.");
+            return;
+        }
+        if (!gastarPE(8, "retorno da Seiva Regenerativa")) return;
+        retornoBrotoUsadoNaCena = true;
+        vidaAtual = Math.floor(vidaMaxima / 2);
+        brotoAtivo = false;
+        brotoRodadasRestantes = 0;
+        cascaVivaUsadaNaRodada = false;
+        mostrarSnackbar(`Seiva Regenerativa: Josias retorna com ${vidaAtual} PV. Broto termina imediatamente.`);
+        atualizarTudo();
+    }
+
+
+    function toggleTextoBroto() {
+        const box = document.getElementById('brotoTextoCompleto');
+        const btn = document.getElementById('toggle-broto-full');
+        if (!box || !btn) return;
+        const aberto = box.style.display === 'block';
+        box.style.display = aberto ? 'none' : 'block';
+        btn.innerText = aberto ? 'Ver texto completo' : 'Ocultar texto completo';
+    }
+
+    function renderizarBroto() {
+        const config = document.getElementById('brotoConfig');
+        const ativoBox = document.getElementById('brotoAtivoBox');
+        if (!config || !ativoBox) return;
+
+        const nomes = { casca: "Casca Viva", corpo: "Corpo Germinado", campo: "Campo Enraizado", seiva: "Seiva Regenerativa" };
+        const redAtual = document.getElementById('brotoReducaoAtual');
+        if (redAtual) redAtual.innerText = 10 * getAtributo("vitalidade");
+        const curaAtual = document.getElementById('brotoCuraAtual');
+        if (curaAtual) curaAtual.innerText = 10 * getAtributo("poder");
+        ['casca','corpo','campo','seiva'].forEach(e => {
+            const el = document.getElementById(`broto-${e}`);
+            if (el) el.classList.toggle('selected', brotoEfeitosSelecionados.has(e));
+        });
+        const escolhaAtr = document.getElementById('brotoAtributoEscolha');
+        if (escolhaAtr) escolhaAtr.style.display = brotoEfeitosSelecionados.has('corpo') && !brotoAtivo ? 'block' : 'none';
+
+        document.getElementById('brotoStatus').innerText = brotoAtivo ? 'ATIVO' : 'INATIVO';
+        config.style.display = brotoAtivo ? 'none' : 'block';
+        ativoBox.style.display = brotoAtivo ? 'block' : 'none';
+
+        const btn = document.getElementById('btnAtivarBroto');
+        if (btn) {
+            btn.innerText = `Ativar Broto (${calcularCustoPE(16)} PE)`;
+            btn.disabled = !combateAtivo || !isMachucado() || brotoEfeitosSelecionados.size === 0;
+            btn.style.opacity = btn.disabled ? '0.45' : '1';
+        }
+        const req = document.getElementById('brotoRequisito');
+        if (req) req.innerText = !combateAtivo
+            ? `Requer uma cena de combate ativa • ${brotoEfeitosSelecionados.size}/2 efeito(s) selecionado(s).`
+            : (isMachucado()
+                ? `Machucado: OK • ${brotoEfeitosSelecionados.size}/2 efeito(s) selecionado(s).`
+                : `Requer Machucado • ${brotoEfeitosSelecionados.size}/2 efeito(s) selecionado(s).`);
+
+        if (brotoAtivo) {
+            document.getElementById('brotoRodadas').innerText = `${brotoRodadasRestantes} rodada(s) restante(s)`;
+            let chips = [...brotoEfeitosSelecionados].map(e => {
+                let extra = e === 'corpo' ? ` (+1 ${atributoBroto})` : '';
+                return `<span class="broto-chip">${nomes[e]}${extra}</span>`;
+            }).join('');
+            chips += `<span class="broto-chip" style="border-color:#ab47bc; color:#e1bee7;">Vulnerável a Caos</span>`;
+            if (brotoEfeitosSelecionados.has('campo')) chips += `<div class="broto-mini" style="margin-top:5px;">Campo Enraizado: +10 resistência; imune a empurrar/puxar/derrubar enquanto as raízes puderem se espalhar; deslocamento aumentado.</div>`;
+            document.getElementById('brotoEfeitosAtivos').innerHTML = chips;
+
+            const btnCasca = document.getElementById('btnCascaViva');
+            btnCasca.style.display = brotoEfeitosSelecionados.has('casca') ? 'inline-block' : 'none';
+            btnCasca.disabled = cascaVivaUsadaNaRodada;
+            btnCasca.innerText = cascaVivaUsadaNaRodada ? 'Casca Viva usada' : `Casca Viva (${calcularCustoPE(4)} PE)`;
+
+            const btnRet = document.getElementById('btnRetornoBroto');
+            btnRet.style.display = brotoEfeitosSelecionados.has('seiva') && vidaAtual === 0 && !retornoBrotoUsadoNaCena ? 'inline-block' : 'none';
+            btnRet.innerText = `Retornar com ½ PV (${calcularCustoPE(8)} PE)`;
+        }
+    }
+
+    function toggleCondicao(nome) {
+        const cond = desvantagens.find(c => c.nome === nome);
+        if (!cond || cond.auto) return;
+        if (condicoesAtivas.has(nome)) {
+            condicoesAtivas.delete(nome);
+            mostrarSnackbar(`${nome} removido.`);
+        } else {
+            if (inquebravelAtivo && cond.categoria === "Física") {
+                mostrarSnackbar(`Inquebrável está ativo: ${nome} é uma condição física e foi ignorada. Se o Mestre determinar que ela atravessa o efeito, encerre Inquebrável/ajuste manualmente.`);
+                return;
+            }
+            condicoesAtivas.add(nome);
+            mostrarSnackbar(`${nome} ativado.`);
+        }
+        atualizarTudo();
+    }
+
+    function rolarConfusao() {
+        if (!condicaoAtiva("Confuso")) {
+            mostrarSnackbar("Ative Confuso antes de rolar.");
+            return;
+        }
+        const r = Math.floor(Math.random() * 6) + 1;
+        let efeito = "";
+        if (r === 1) efeito = "movimento aleatório";
+        else if (r <= 3) efeito = "não faz nada";
+        else if (r <= 5) efeito = "ataca o ser mais próximo";
+        else {
+            efeito = "recupera-se da Confusão";
+            condicoesAtivas.delete("Confuso");
+        }
+        mostrarSnackbar(`Confuso 1d6: ${r} — ${efeito}.`);
+        atualizarTudo();
+    }
+
+    function renderizarCondicoes() {
+        const container = document.getElementById('listaCondicoes');
+        const box = document.getElementById('condicoesAtivasBox');
+        const ativosLista = document.getElementById('condicoesAtivasLista');
+        if (!container || !box || !ativosLista) return;
+
+        const agrupadas = {};
+        desvantagens.forEach(c => {
+            if (!agrupadas[c.categoria]) agrupadas[c.categoria] = [];
+            agrupadas[c.categoria].push(c);
+        });
+
+        container.innerHTML = Object.entries(agrupadas).map(([categoria, itens]) => `
+            <div style="font-size:0.82rem; font-weight:bold; color:var(--accent-amber); margin:10px 0 6px;">${categoria}</div>
+            <div class="condition-grid">
+                ${itens.map(c => {
+                    const ativa = condicaoAtiva(c.nome);
+                    return `
+                        <div class="condition-card ${ativa ? 'active' : ''} ${c.auto ? 'auto' : ''}">
+                            <div class="condition-top">
+                                <div>
+                                    <div class="condition-name">${c.nome}</div>
+                                    <div class="condition-category">${c.categoria}${c.auto ? ' • automática' : ''}</div>
+                                </div>
+                                <button class="condition-btn" ${c.auto ? 'disabled' : ''} onclick="toggleCondicao('${c.nome.replace(/'/g, "\'")}')">${c.auto ? (ativa ? 'ATIVA' : 'AUTO') : (ativa ? 'Remover' : 'Ativar')}</button>
+                            </div>
+                            <div class="condition-desc">${c.desc}</div>
+                            ${c.especial === 'confuso' && ativa ? '<div class="condition-extra"><button class="action-btn" onclick="rolarConfusao()">🎲 Rolar Confusão (1d6)</button></div>' : ''}
+                        </div>`;
+                }).join('')}
+            </div>`).join('');
+
+        const ativos = desvantagens.filter(c => condicaoAtiva(c.nome));
+        box.style.display = ativos.length ? 'block' : 'none';
+        ativosLista.innerHTML = ativos.map(c => `<span class="condition-chip">${c.nome}${c.nome === 'Enfraquecido' ? ' • PE +4' : ''}${c.nome === 'Vulnerável' ? ' • +10 dano' : ''}</span>`).join('');
+    }
+
+
+    function renderizarAtributos() {
+        Object.keys(atributosBase).forEach(chave => {
+            const atual = getAtributo(chave);
+            const bonus = bonusAtributoTemporario(chave);
+            const dots = document.getElementById(`dots-${chave}`);
+            const val = document.getElementById(`val-${chave}`);
+            const temp = document.getElementById(`temp-${chave}`);
+            const meta = document.getElementById(`meta-${chave}`);
+            if (dots) dots.innerText = desenharPontos(atual);
+            if (val) val.innerText = atual;
+            if (temp) temp.innerText = bonus ? `${bonus > 0 ? '+' : ''}${bonus} temp.` : '';
+            if (meta) {
+                const origens = [];
+                if (brotoAtivo && brotoEfeitosSelecionados.has("corpo") && normalizarAtributo(atributoBroto) === chave) origens.push("Corpo Germinado +1");
+                efeitosTemporarios.filter(e => e.atributo === chave).forEach(e => origens.push(`${e.nome} ${e.valor >= 0 ? '+' : ''}${e.valor}`));
+                meta.innerText = `Base ${atributosBase[chave]}${origens.length ? ' • ' + origens.join(' • ') : ''}`;
+            }
+        });
+    }
+
+    function renderizarCombate() {
+        const txt = document.getElementById('txtCenaRodada');
+        const proxima = document.getElementById('btnProximaRodada');
+        const encerrar = document.getElementById('btnEncerrarCena');
+        const iniciar = document.getElementById('btnIniciarCena');
+        if (txt) txt.innerText = combateAtivo ? `Cena ${numeroCena} • Rodada ${rodadaAtual}` : `Fora de combate${numeroCena ? ` • última cena: ${numeroCena}` : ''}`;
+        if (proxima) proxima.style.display = combateAtivo ? 'inline-block' : 'none';
+        if (encerrar) encerrar.style.display = combateAtivo ? 'inline-block' : 'none';
+        if (iniciar) iniciar.style.display = combateAtivo ? 'none' : 'inline-block';
+
+        const passivos = [];
+        const ativos = [];
+        const desvant = [];
+
+        // Passivos: apenas efeitos que surgiram ou foram alterados durante o combate.
+        if (isMachucado()) passivos.push(`<div class="effect-item">⚡ <strong>Potência Máxima</strong><div class="effect-meta">+1d físico corpo a corpo • defesas/resistências dobradas • +5 Bloqueio.</div></div>`);
+        if (manoplasAtivas && cargasManoplas > 0) passivos.push(`<div class="effect-item">🥊 <strong>Cargas das Manoplas: ${cargasManoplas}</strong><div class="effect-meta">+${cargasManoplas * 5} dano elemental • +${cargasManoplas * 5} Bloqueio.</div></div>`);
+        if (brotoAtivo && brotoEfeitosSelecionados.has('corpo')) passivos.push(`<div class="effect-item">🌿 <strong>Corpo Germinado</strong><div class="effect-meta">+1 ${atributoBroto} enquanto Broto estiver ativo.</div></div>`);
+        if (brotoAtivo && brotoEfeitosSelecionados.has('campo')) passivos.push(`<div class="effect-item">🌱 <strong>Campo Enraizado</strong><div class="effect-meta">+10 resistência • não pode ser empurrado/puxado/derrubado quando enraizado.</div></div>`);
+        if (brotoAtivo && brotoEfeitosSelecionados.has('seiva')) passivos.push(`<div class="effect-item">💧 <strong>Seiva Regenerativa</strong><div class="effect-meta">No início da nova rodada recupera até ${10 * getAtributo('poder')} PV.</div></div>`);
+        efeitosTemporarios.forEach(e => passivos.push(`<div class="effect-item">⏳ <strong>${e.nome}</strong> — ${e.duracao} rodada(s)${e.atributo ? `<div class="effect-meta">${nomesAtributos[e.atributo]} ${e.valor >= 0 ? '+' : ''}${e.valor}</div>` : ''}<button onclick="removerEfeitoTemporario(${e.id})" class="combat-mini-btn" style="float:right;">Remover</button></div>`));
+
+        // Ativos: estados, habilidades e reações com botões contextuais para uso rápido.
+        if (combateAtivo) {
+            ativos.push(`<div class="effect-item">🛡️ <strong>Escudo Humano</strong><div class="effect-meta">Reação ao aliado ser alvo em alcance curto.</div><div class="combat-action"><button onclick="usarHab(4, 'Escudo Humano')" class="combat-mini-btn">Usar (${calcularCustoPE(4)} PE)</button></div></div>`);
+            ativos.push(`<div class="effect-item">🪨 <strong>Porco Espinho</strong><div class="effect-meta">Ao falhar em Reação: 4d8 elemental.</div><div class="combat-action"><button onclick="usarHab(4, 'Porco Espinho')" class="combat-mini-btn">Usar (${calcularCustoPE(4)} PE)</button></div></div>`);
+            if (!inquebravelAtivo) ativos.push(`<div class="effect-item">🛡️ <strong>Inquebrável</strong><div class="effect-meta">Ativa até o fim da cena.</div><div class="combat-action"><button onclick="usarInquebravel()" class="combat-mini-btn" >${acaoPlanejada('Ativar Inquebrável') ? 'Planejado' : `Ativar (${calcularCustoPE(4)} PE)`}</button></div></div>`);
+            if (!colossoAtivo) ativos.push(`<div class="effect-item">🪨 <strong>Colosso</strong><div class="effect-meta">Transformação elemental de Terra.</div><div class="combat-action"><button onclick="toggleColosso()" class="combat-mini-btn">${acaoPlanejada('Ativar Colosso') ? 'Planejado' : `Ativar (${calcularCustoPE(14)} PE)`}</button></div></div>`);
+            if (!brotoAtivo && isMachucado()) ativos.push(`<div class="effect-item">🌱 <strong>Broto</strong><div class="effect-meta">Disponível por estar Machucado. Usa os efeitos escolhidos na seção Broto.</div><div class="combat-action"><button onclick="ativarBroto()" class="combat-mini-btn">${acaoPlanejada('Ativar Broto') ? 'Planejado' : `Ativar (${calcularCustoPE(16)} PE)`}</button></div></div>`);
+        }
+        if (inquebravelAtivo) ativos.push(`<div class="effect-item">🛡️ <strong>Inquebrável</strong> — até o fim da cena<div class="effect-meta">Imune a condições físicas mundanas.</div><div class="combat-action"><button onclick="resistenciaInquebravel()" class="combat-mini-btn">Teste extra (${calcularCustoPE(2)} PE)</button></div></div>`);
+        if (colossoAtivo) ativos.push(`<div class="effect-item">🪨 <strong>Colosso</strong><div class="effect-meta">Ataques: ${getAtributo('forca')}d12 por Força • +5 Bloqueio.</div><div class="combat-action"><button onclick="usarImpacto()" class="combat-mini-btn">Impacto Sísmico (${calcularCustoPE(4)} PE)</button><button onclick="toggleColosso()" class="combat-mini-btn">Encerrar Colosso</button></div></div>`);
+        if (brotoAtivo) {
+            let botoes = '';
+            if (brotoEfeitosSelecionados.has('casca')) botoes += `<button onclick="usarCascaViva()" class="combat-mini-btn" ${cascaVivaUsadaNaRodada ? 'disabled' : ''}>${cascaVivaUsadaNaRodada ? 'Casca Viva usada' : `Casca Viva (${calcularCustoPE(4)} PE)`}</button>`;
+            if (brotoEfeitosSelecionados.has('seiva') && vidaAtual === 0 && !retornoBrotoUsadoNaCena) botoes += `<button onclick="retornoBroto()" class="combat-mini-btn">Retorno da Seiva (${calcularCustoPE(8)} PE)</button>`;
+            botoes += `<button onclick="encerrarBroto('manual')" class="combat-mini-btn">Encerrar Broto</button>`;
+            ativos.push(`<div class="effect-item">🌱 <strong>Broto</strong> — ${brotoRodadasRestantes} rodada(s)<div class="effect-meta">Vulnerável a Caos.</div><div class="combat-action">${botoes}</div></div>`);
+        }
+        if (manoplasRetraidasRodadas > 0) ativos.push(`<div class="effect-item">🥊 <strong>Manoplas retraídas</strong> — ${manoplasRetraidasRodadas} rodada(s) restante(s)</div>`);
+        else if (manoplasAtivas && !colossoAtivo) ativos.push(`<div class="effect-item">🥊 <strong>Manoplas ativas</strong><div class="effect-meta">Cargas ${cargasManoplas}/5 • Rupturas ${rupturasManoplas}/5</div><div class="combat-action"><button onclick="manoplaAcao('sucesso')" class="combat-mini-btn">+1 Carga</button><button onclick="manoplaAcao('falha')" class="combat-mini-btn">+1 Ruptura</button></div></div>`);
+        else if (!colossoAtivo && combateAtivo) ativos.push(`<div class="effect-item">🥊 <strong>Manoplas</strong><div class="effect-meta">Inativas.</div><div class="combat-action"><button onclick="manoplaAcao('ativar')" class="combat-mini-btn">${acaoPlanejada('Ativar Manoplas') ? 'Planejado' : `Ativar (${calcularCustoPE(2)} PE)`}</button></div></div>`);
+
+        // Desvantagens e condições atualmente aplicadas ao personagem.
+        const conds = desvantagens.filter(c => condicaoAtiva(c.nome));
+        conds.forEach(c => {
+            let botoes = '';
+            if (c.especial === 'confuso') botoes += `<button onclick="rolarConfusao()" class="combat-mini-btn">Rolar Confusão 1d6</button>`;
+            if (!c.auto) botoes += `<button onclick="toggleCondicao('${c.nome.replace(/'/g, "\'")}')" class="combat-mini-btn">Remover</button>`;
+            desvant.push(`<div class="effect-item"><strong>${c.nome}</strong><div class="effect-meta">${c.desc}</div>${botoes ? `<div class="combat-action">${botoes}</div>` : ''}</div>`);
+        });
+        if (brotoAtivo) desvant.push(`<div class="effect-item"><strong>Vulnerável a Caos</strong><div class="effect-meta">Vulnerabilidade específica causada por Broto enquanto a transformação durar.</div></div>`);
+
+        const p = document.getElementById('combatePassivos');
+        const a = document.getElementById('combateAtivos');
+        const d = document.getElementById('combateDesvantagens');
+        if (p) p.innerHTML = passivos.length ? passivos.join('') : '<div class="combat-empty">Nenhum passivo relevante no momento.</div>';
+        if (a) a.innerHTML = ativos.length ? ativos.join('') : '<div class="combat-empty">Nenhuma ação contextual ativa no momento.</div>';
+        if (d) d.innerHTML = desvant.length ? desvant.join('') : '<div class="combat-empty">Sem desvantagens ou condições ativas.</div>';
+
+        const peBox = document.getElementById('turnPeBox');
+        const peLista = document.getElementById('turnPeLista');
+        const peStatus = document.getElementById('turnPeStatus');
+        const peConfirmar = document.getElementById('btnConfirmarPeTurno');
+        const peCancelar = document.getElementById('btnCancelarPeTurno');
+        if (peBox) peBox.style.display = 'block';
+        if (peLista && peStatus && peConfirmar) {
+            const total = totalPePlanejado();
+            peLista.innerHTML = gastosPeTurno.length ? gastosPeTurno.map(g => `<div class="turn-pe-item"><span><strong>${g.nome}</strong><div class="turn-pe-summary">${resumoAcaoPlanejada(g)}</div></span><span style="display:flex;align-items:center;gap:6px;"><span>${g.custoFinal} PE${g.custoFinal !== g.custoBase ? ' • +4 Enfraquecido' : ''}</span><button onclick="cancelarGasto(${g.id})" class="combat-mini-btn" style="background:#6d4c41;">Cancelar</button></span></div>`).join('') : '';
+            peStatus.innerHTML = gastosPeTurno.length ? `${gastosPeTurno.length} ação(ões) selecionada(s) • <span class="turn-pe-total">Total: ${total} PE</span> • PE após pagamento: ${Math.max(0, peAtual - total)}` : 'Nenhuma habilidade selecionada.';
+            peConfirmar.style.display = gastosPeTurno.length ? 'inline-block' : 'none';
+            if (peCancelar) peCancelar.style.display = gastosPeTurno.length ? 'inline-block' : 'none';
+        }
+
+        const hist = document.getElementById('historicoCombate');
+        if (hist) hist.innerHTML = historicoCombate.length ? historicoCombate.map(h => `<div class="history-item"><span class="history-meta">${h.contexto}</span>${h.texto}</div>`).join('') : '<div class="combat-empty">Nenhum evento registrado ainda.</div>';
+
+        const lista = document.getElementById('listaEfeitosTemporarios');
+        if (lista) {
+            lista.innerHTML = efeitosTemporarios.length ? efeitosTemporarios.map(e => `<div class="effect-item"><strong>${e.nome}</strong> — ${e.duracao} rodada(s)${e.atributo ? ` • ${nomesAtributos[e.atributo]} ${e.valor >= 0 ? '+' : ''}${e.valor}` : ''}<button onclick="removerEfeitoTemporario(${e.id})" style="float:right;background:#552;color:#fff;border:0;border-radius:4px;padding:2px 6px;cursor:pointer;">Remover</button></div>`).join('') : `<div class="audit-mini">Nenhum efeito temporário cadastrado.</div>`;
+        }
+    }
+
     function atualizarTudo() {
         let machucado = isMachucado();
+        renderizarAtributos();
+        renderizarCombate();
 
         // Textos de Recursos
         document.getElementById('txtVida').innerText = `${vidaAtual} / ${vidaMaxima}`;
         document.getElementById('txtVidaTemp').innerText = `${vidaTemp} PV`;
         document.getElementById('txtSanidade').innerText = `${sanidadeAtual} / ${sanidadeMaxima}`;
-        document.getElementById('txtPe').innerText = `${peAtual} / ${peMaximo}`;
+        document.getElementById('txtPe').innerText = totalPePlanejado() > 0 ? `${peAtual} / ${peMaximo} • ${totalPePlanejado()} reservado` : `${peAtual} / ${peMaximo}`;
 
-        // Alertas e Retrato
-        document.getElementById('machucadoAlert').style.display = machucado ? 'flex' : 'none';
-        document.getElementById('colossoAlert').style.display = colossoAtivo ? 'flex' : 'none';
-
+        // Retrato
         let retrato = imgNormal;
         if (colossoAtivo) retrato = imgColosso;
         else if (machucado) retrato = imgMachucado;
@@ -548,9 +1615,10 @@
 
         // Defesas cálculos
         let bonusColete = coleteAtivo ? 20 : 0;
-        let defFis = 4 + bonusColete + defFisicaExtra;
+        let defFis = (getAtributo("vitalidade") * 2) + bonusColete + defFisicaExtra;
         let defMen = defMentalExtra;
         let defEle = defElementalExtra + bonusColete;
+        if (brotoAtivo && brotoEfeitosSelecionados.has("casca")) defEle += 5;
 
         if (machucado) {
             defFis *= 2;
@@ -562,41 +1630,98 @@
         document.getElementById('valDefMental').innerText = defMen;
         document.getElementById('valDefElemental').innerText = defEle;
 
-        let bonusManoplas = colossoAtivo ? 0 : (cargasManoplas * 5);
+        if (condicaoAtiva("Vulnerável")) {
+            document.getElementById('valDefFisica').title = "Vulnerável ativo: defesas comprometidas/anuladas conforme a regra da condição.";
+            document.getElementById('valDefMental').title = document.getElementById('valDefFisica').title;
+            document.getElementById('valDefElemental').title = document.getElementById('valDefFisica').title;
+        } else {
+            document.getElementById('valDefFisica').title = "";
+            document.getElementById('valDefMental').title = "";
+            document.getElementById('valDefElemental').title = "";
+        }
+
+        let bonusManoplas = (colossoAtivo || !manoplasAtivas) ? 0 : (cargasManoplas * 5);
         let bonusPotMax = machucado ? 5 : 0;
         let bonusColosso = colossoAtivo ? 5 : 0;
         let bloqueioTotal = 5 + (5 * 2) + 0 + bonusManoplas + bonusPotMax + bonusColosso;
         document.getElementById('valBloqueio').innerText = bloqueioTotal;
 
-        // Auditoria
+        // Dados do ataque: motor universal com dado-base, atributo, modificadores em dados e dano fixo.
         let auditHTML = '';
+        const ataque = construirAtaqueAtual();
+        const pools = {};
+        const fixos = [];
+        const addPool = (qtd, face, tipo, fonte) => {
+            if (!qtd) return;
+            const chave = `${face}|${tipo}`;
+            if (!pools[chave]) pools[chave] = { qtd:0, face, tipo };
+            pools[chave].qtd += qtd;
+            auditHTML += `<div class="damage-roll-row"><span class="damage-source">${fonte}</span><span class="damage-dice">${qtd > 0 ? '+' : ''}${qtd}d${face} ${tipo}</span></div>`;
+        };
+        const addFixo = (valor, tipo, fonte) => {
+            if (!valor) return;
+            fixos.push({valor,tipo,fonte});
+        };
+
+        // Base da arma/forma.
+        if (ataque.baseQtd > 0) addPool(ataque.baseQtd, ataque.baseFace, ataque.tipoBase, `${ataque.nome} • base`);
+
+        // Ataques corpo a corpo recebem dados pelo atributo relacionado. Aqui a Força atual já inclui Corpo Germinado e efeitos do Mestre.
+        if (ataque.corpoACorpo && ataque.atributo) {
+            const atr = getAtributo(ataque.atributo);
+            addPool(atr, ataque.dadoAtributo, ataque.tipoBase, `${nomesAtributos[ataque.atributo]} (${atr})`);
+        }
+
+        // Modificadores gerais do ataque.
+        addPool(1, 8, 'físico', 'Pedrada!');
+        if (isMachucado()) addPool(1, ataque.dadoAtributo, 'físico', 'Potência Máxima');
+
+        const impactoPlanejado = acaoPlanejada('Impacto Sísmico');
         if (colossoAtivo) {
-            auditHTML += `<div style="display:flex; justify-content:space-between;"><span>Forma Colosso (Terra)</span><span style="color:var(--accent-amber); font-weight:bold;">1d12 elemental (Rocha Viva)</span></div>`;
-            auditHTML += `<div style="display:flex; justify-content:space-between;"><span>Impacto Sísmico (Condicional)</span><span style="color:var(--accent-amber); font-weight:bold;">+4d12 físico + 2d20 elemental</span></div>`;
-        } else {
-            auditHTML += `<div style="display:flex; justify-content:space-between;"><span>Manoplas: Vontade de Aço</span><span style="color:var(--accent-amber); font-weight:bold;">2d8 físico</span></div>`;
-            if (cargasManoplas > 0) {
-                auditHTML += `<div style="display:flex; justify-content:space-between;"><span>Cargas das Manoplas (${cargasManoplas})</span><span style="color:var(--accent-amber); font-weight:bold;">+${cargasManoplas * 5} elemental</span></div>`;
+            auditHTML += `<div class="damage-roll-row"><span class="damage-source">Impacto Sísmico • opcional no acerto</span><span class="damage-dice">+4d12 físico + 2d20 elemental</span></div>`;
+            if (impactoPlanejado) {
+                addPool(4, 12, 'físico', 'Impacto Sísmico planejado');
+                addPool(2, 20, 'elemental', 'Impacto Sísmico planejado');
             }
         }
-        auditHTML += `<div style="display:flex; justify-content:space-between;"><span>Passiva: Pedrada! (10% Terra)</span><span style="color:var(--accent-amber); font-weight:bold;">+1d8 físico</span></div>`;
-        if (machucado) {
-            auditHTML += `<div style="display:flex; justify-content:space-between;"><span>Postura: Potência Máxima</span><span style="color:var(--accent-amber); font-weight:bold;">+1d de dano físico</span></div>`;
-        }
+
+        if (!colossoAtivo && manoplasAtivas && cargasManoplas > 0) addFixo(cargasManoplas * 5, 'elemental', `Cargas das Manoplas (${cargasManoplas})`);
+        fixos.forEach(f => { auditHTML += `<div class="damage-fixed-row"><span class="damage-source">${f.fonte}</span><span class="damage-fixed">+${f.valor} ${f.tipo} fixo</span></div>`; });
+
+        const totalDados = Object.values(pools).filter(p=>p.qtd).map(p=>`${p.qtd}d${p.face} ${p.tipo}`).join(' + ') || '—';
+        const totalFixo = fixos.length ? fixos.map(f=>`+${f.valor} ${f.tipo}`).join(' + ') : '0';
+        const notaImpacto = (colossoAtivo && !impactoPlanejado) ? '<div class="turn-pe-summary">Impacto Sísmico só entra no total quando for planejado.</div>' : '';
+        auditHTML += `<div class="damage-total">
+            <div class="damage-total-line"><span><strong>Total em dados</strong></span><span class="damage-dice">${totalDados}</span></div>
+            <div class="damage-total-line"><span><strong>Dano fixo</strong></span><span class="damage-fixed">${totalFixo}</span></div>
+            ${notaImpacto}
+        </div>`;
         document.getElementById('auditContent').innerHTML = auditHTML;
 
         // Manoplas visual
-        document.getElementById('manoplaContainer').style.opacity = colossoAtivo ? '0.4' : '1';
+        document.getElementById('manoplaContainer').style.opacity = (colossoAtivo || manoplasRetraidasRodadas > 0) ? '0.55' : '1';
         document.getElementById('txtCargas').innerText = cargasManoplas;
         document.getElementById('txtRupturas').innerText = rupturasManoplas;
         document.getElementById('txtRupturaDano').innerText = `Dano da Ruptura (se estourar): ${5 * (cargasManoplas + rupturasManoplas)} de dano puro`;
+        document.getElementById('txtManoplaEstado').innerText = manoplasRetraidasRodadas > 0 ? `RETRAÍDAS — ${manoplasRetraidasRodadas} rodada(s)` : (manoplasAtivas ? 'ATIVAS — Intenção canalizada' : 'Inativas');
+        const pend = document.getElementById('txtDanoPendenteManopla');
+        pend.style.display = danoPendenteManopla > 0 ? 'block' : 'none';
+        pend.innerText = danoPendenteManopla > 0 ? `⚠ Dano puro pendente da última Ruptura: ${danoPendenteManopla} (não aplicado automaticamente).` : '';
 
         // Renderizar Habilidades
         renderizarHabilidades(habilidadesClasse, 'listaHabClasse');
         renderizarHabilidades(habilidadesElementais, 'listaHabElemental');
+        renderizarBroto();
+        renderizarCondicoes();
+
+        // Atualiza custos visuais fora das listas de habilidades
+        const ativarManoplaBtn = document.querySelector('#manoplaContainer button[onclick="manoplaAcao(\'ativar\')"]');
+        if (ativarManoplaBtn) ativarManoplaBtn.innerText = `Ativar (${calcularCustoPE(2)} PE)`;
+        salvarEstado();
     }
 
-    // Inicializar aplicação
+    // Inicializar aplicação: restaura o último estado salvo, se existir.
+    carregarEstado();
     atualizarTudo();
 </script>
 
